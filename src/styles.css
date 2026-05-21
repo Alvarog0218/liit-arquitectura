@@ -5,18 +5,12 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Design system definition.
- *
- * The @theme inline block maps CSS custom properties to Tailwind utility
- * classes (e.g. --color-primary -> bg-primary, text-primary).
- *
- * The :root and .dark blocks define the actual color values using oklch.
- * All colors MUST use oklch format.
- *
- * To add a new semantic color:
- * 1. Add the variable to :root (light value) and .dark (dark value)
- * 2. Register it in @theme inline as --color-<name>: var(--<name>)
+ * LIT Arquitectura — design system from brand manual.
+ * Palette: #c01e4f (magenta), #4d1f2e (vino), #3b4d63 (azul pizarra), #465037 (oliva)
+ * Typography: Anta (Google Fonts)
  */
+
+@import url("https://fonts.googleapis.com/css2?family=Anta&display=swap");
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
@@ -26,6 +20,8 @@
   --radius-2xl: calc(var(--radius) + 8px);
   --radius-3xl: calc(var(--radius) + 12px);
   --radius-4xl: calc(var(--radius) + 16px);
+  --font-sans: "Anta", system-ui, sans-serif;
+  --font-display: "Anta", system-ui, sans-serif;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -40,6 +36,10 @@
   --color-muted-foreground: var(--muted-foreground);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
+  --color-ink: var(--ink);
+  --color-olive: var(--olive);
+  --color-wine: var(--wine);
+  --color-paper: var(--paper);
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
   --color-border: var(--border);
@@ -62,26 +62,35 @@
 }
 
 :root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
+  --radius: 0.125rem;
+  /* Paper background — warm off-white */
+  --paper: oklch(0.985 0.005 80);
+  --background: var(--paper);
+  /* Ink — deep ink for body */
+  --ink: oklch(0.22 0.03 260);
+  --foreground: var(--ink);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
+  --card-foreground: var(--ink);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
+  --popover-foreground: var(--ink);
+  /* Primary — LIT magenta #c01e4f */
+  --primary: oklch(0.53 0.21 8);
+  --primary-foreground: oklch(0.985 0.005 80);
+  /* Secondary / wine #4d1f2e */
+  --wine: oklch(0.28 0.08 10);
+  --secondary: var(--wine);
+  --secondary-foreground: oklch(0.985 0.005 80);
+  --muted: oklch(0.94 0.008 80);
+  --muted-foreground: oklch(0.45 0.02 260);
+  /* Accent / oliva #465037 */
+  --olive: oklch(0.42 0.05 130);
+  --accent: var(--olive);
+  --accent-foreground: oklch(0.985 0.005 80);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
+  --border: oklch(0.88 0.01 260);
+  --input: oklch(0.88 0.01 260);
+  --ring: oklch(0.53 0.21 8);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -140,5 +149,44 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
+  }
+}
+
+/* Blueprint draw animation — used by inline SVGs */
+@keyframes blueprint-draw {
+  to { stroke-dashoffset: 0; }
+}
+.blueprint-line {
+  stroke-dasharray: 1200;
+  stroke-dashoffset: 1200;
+}
+.blueprint-line.in-view {
+  animation: blueprint-draw 2.4s ease-out forwards;
+}
+
+/* Curtain reveal */
+@keyframes curtain-open {
+  0% { clip-path: inset(0 50% 0 50%); }
+  100% { clip-path: inset(0 0 0 0); }
+}
+.curtain-reveal {
+  clip-path: inset(0 50% 0 50%);
+}
+.curtain-reveal.in-view {
+  animation: curtain-open 1.1s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blueprint-line, .curtain-reveal {
+    animation: none !important;
+    stroke-dashoffset: 0 !important;
+    clip-path: none !important;
   }
 }
