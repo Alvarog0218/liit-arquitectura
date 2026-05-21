@@ -5,7 +5,7 @@ type Props = {
   children: ReactNode;
   className?: string;
   delay?: number;
-  variant?: "fade" | "module" | "curtain";
+  variant?: "fade" | "module";
 };
 
 /** Wrapper for entrance animations. */
@@ -20,17 +20,6 @@ export function Reveal({ children, className = "", delay = 0, variant = "fade" }
         whileInView={{ y: 0, opacity: 1, rotateX: 0 }}
         viewport={{ once: true, amount: 0.25 }}
         transition={{ duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] }}
-      >
-        {children}
-      </motion.div>
-    );
-  }
-
-  if (variant === "curtain") {
-    return (
-      <motion.div
-        className={`${className} curtain-reveal in-view`}
-        style={{ animationDelay: `${delay}s` }}
       >
         {children}
       </motion.div>

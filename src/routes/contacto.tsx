@@ -7,9 +7,12 @@ import { BlueprintLine } from "@/components/lit/BlueprintLine";
 export const Route = createFileRoute("/contacto")({
   head: () => ({
     meta: [
-      { title: "Contacto — LIT Arquitectura" },
-      { name: "description", content: "Cuéntanos tu proyecto. Estudio de arquitectura LIT." },
-      { property: "og:title", content: "Contacto · LIT Arquitectura" },
+      { title: "Contacto — LIIT Arquitectura" },
+      {
+        name: "description",
+        content: "Cuéntanos tu proyecto. Convertimos ideas en diseño, experiencia y valor.",
+      },
+      { property: "og:title", content: "Contacto · LIIT Arquitectura" },
       { property: "og:description", content: "Empecemos a diseñar tu próximo espacio." },
     ],
   }),
@@ -24,13 +27,13 @@ function Contacto() {
         <div className="md:col-span-7">
           <span className="text-xs uppercase tracking-[0.3em] text-primary">Contacto</span>
           <h1 className="mt-4 text-5xl leading-[1.05] md:text-7xl">
-            Cuéntanos tu proyecto.
+            Tu espacio tiene más potencial del que imaginas.
           </h1>
         </div>
         <div className="md:col-span-5 md:pt-8">
           <p className="text-foreground/70">
-            Cada gran espacio empieza con una conversación. Escríbenos y
-            te responderemos en menos de 48 horas.
+            En LIIT lo convertimos en diseño, experiencia y valor. Escríbenos y empecemos con una
+            mirada clara sobre lo que tu espacio puede llegar a ser.
           </p>
         </div>
       </header>
@@ -40,16 +43,14 @@ function Contacto() {
       <div className="grid gap-16 md:grid-cols-12">
         <Reveal className="md:col-span-5">
           <div className="space-y-8">
-            <ContactItem icon={<Mail />} label="Email" value="hola@litarquitectura.com" />
+            <ContactItem icon={<Mail />} label="Email" value="hola@liitarquitectura.com" />
             <ContactItem icon={<Phone />} label="Teléfono" value="+00 000 000 000" />
             <ContactItem icon={<MapPin />} label="Estudio" value="Av. Principal 123, Ciudad" />
           </div>
           <div className="mt-12 border-l-2 border-primary pl-6 text-sm text-foreground/70">
             <p>
-              ¿Buscas servicios de construcción y desarrollo de obra?
-              Trabajamos junto a nuestra empresa hermana{" "}
-              <span className="text-primary">AMBOSS</span> para ofrecer
-              soluciones integrales.
+              También podemos orientarte en consultorías, presupuestos, trámites ante curadurías y
+              decisiones técnicas para que el proyecto avance con mayor seguridad.
             </p>
           </div>
         </Reveal>
@@ -92,7 +93,15 @@ function Contacto() {
   );
 }
 
-function ContactItem({ icon, label, value }: { icon: React.ReactNode; label: string; value: string }) {
+function ContactItem({
+  icon,
+  label,
+  value,
+}: {
+  icon: React.ReactNode;
+  label: string;
+  value: string;
+}) {
   return (
     <div className="flex items-start gap-4">
       <div className="mt-1 text-primary">{icon}</div>
@@ -104,7 +113,17 @@ function ContactItem({ icon, label, value }: { icon: React.ReactNode; label: str
   );
 }
 
-function Field({ label, name, type = "text", required }: { label: string; name: string; type?: string; required?: boolean }) {
+function Field({
+  label,
+  name,
+  type = "text",
+  required,
+}: {
+  label: string;
+  name: string;
+  type?: string;
+  required?: boolean;
+}) {
   return (
     <label className="block">
       <span className="text-[10px] uppercase tracking-[0.25em] text-foreground/60">{label}</span>
@@ -134,7 +153,15 @@ function SelectField({ label, name, options }: { label: string; name: string; op
   );
 }
 
-function TextareaField({ label, name, required }: { label: string; name: string; required?: boolean }) {
+function TextareaField({
+  label,
+  name,
+  required,
+}: {
+  label: string;
+  name: string;
+  required?: boolean;
+}) {
   return (
     <label className="block">
       <span className="text-[10px] uppercase tracking-[0.25em] text-foreground/60">{label}</span>

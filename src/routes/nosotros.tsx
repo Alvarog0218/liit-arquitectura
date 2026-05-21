@@ -1,15 +1,19 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Reveal } from "@/components/lit/Reveal";
 import { BlueprintLine } from "@/components/lit/BlueprintLine";
-import heroImg from "@/assets/hero-interior.jpg";
+import { heroProject } from "@/data/projects";
 
 export const Route = createFileRoute("/nosotros")({
   head: () => ({
     meta: [
-      { title: "Nosotros — LIT Arquitectura" },
-      { name: "description", content: "Estudio de arquitectura contemporánea. Empresa hermana de AMBOSS." },
-      { property: "og:title", content: "Nosotros · LIT Arquitectura" },
-      { property: "og:description", content: "Diseño que se siente, se habita y se vive." },
+      { title: "Nosotros — LIIT Arquitectura" },
+      {
+        name: "description",
+        content:
+          "En LIIT transformamos ideas en espacios residenciales y comerciales con intención, carácter y valor.",
+      },
+      { property: "og:title", content: "Nosotros · LIIT Arquitectura" },
+      { property: "og:description", content: "Espacios con intención. Diseño con carácter." },
     ],
   }),
   component: Nosotros,
@@ -20,25 +24,24 @@ function Nosotros() {
     <div className="mx-auto max-w-7xl px-6 pt-16 pb-24">
       <header className="mb-16 grid gap-10 md:grid-cols-12">
         <div className="md:col-span-7">
-          <span className="text-xs uppercase tracking-[0.3em] text-primary">Sobre LIT</span>
+          <span className="text-xs uppercase tracking-[0.3em] text-primary">Sobre LIIT</span>
           <h1 className="mt-4 text-5xl leading-[1.05] md:text-7xl">
-            Diseñamos atmósferas, no solo edificios.
+            Transformamos ideas en espacios que se viven, se sienten y se recuerdan.
           </h1>
         </div>
         <div className="md:col-span-5 md:pt-8">
           <p className="text-foreground/70">
-            La nueva identidad de LIT Arquitectura nace desde la energía
-            de la creatividad, la libertad y la pasión por transformar
-            espacios en experiencias vivas.
+            Diseñamos proyectos residenciales y comerciales donde estética, funcionalidad y
+            experiencia se integran para crear lugares con identidad.
           </p>
         </div>
       </header>
 
       <Reveal>
-        <div className="curtain-reveal in-view aspect-[16/7] overflow-hidden">
+        <div className="aspect-[16/7] overflow-hidden">
           <img
-            src={heroImg}
-            alt="Estudio LIT"
+            src={heroProject.image}
+            alt="Proyecto residencial de LIIT"
             loading="lazy"
             width={1600}
             height={1024}
@@ -49,22 +52,31 @@ function Nosotros() {
 
       <section className="mt-24 grid gap-16 md:grid-cols-2">
         <Reveal>
-          <h2 className="text-3xl">Filosofía</h2>
+          <h2 className="text-3xl">Para hogares</h2>
           <p className="mt-4 text-foreground/70 leading-relaxed">
-            Más que arquitectura, somos diseño que se siente, se habita y
-            se vive. Nuestra esencia conecta con una visión fresca,
-            dinámica y en constante evolución, donde cada proyecto es una
-            oportunidad para experimentar, innovar y crear lugares que
-            inspiran.
+            Diseñamos hogares que se sienten propios: espacios cálidos, funcionales y pensados para
+            mejorar la forma en la que habitas tu día a día. Una casa no debería ser solo bonita;
+            debería hablar de ti, adaptarse a tu ritmo y hacerte sentir en el lugar correcto.
           </p>
         </Reveal>
         <Reveal delay={0.1}>
-          <h2 className="text-3xl">Aproximación</h2>
+          <h2 className="text-3xl">Para negocios</h2>
           <p className="mt-4 text-foreground/70 leading-relaxed">
-            Creemos en los espacios que cuentan historias, que despiertan
-            sensaciones y que se adaptan a nuevas formas de vivir,
-            trabajar y crear. Trabajamos con una paleta amplia, materiales
-            honestos y una mirada contemporánea.
+            Diseñamos espacios comerciales que comunican confianza, presencia y valor. La
+            distribución, la iluminación, los materiales, los recorridos y la atmósfera influyen en
+            cómo tus clientes perciben tu marca y se relacionan con ella.
+          </p>
+        </Reveal>
+      </section>
+
+      <section className="mt-20 border-l-2 border-primary pl-8">
+        <Reveal>
+          <span className="text-xs uppercase tracking-[0.3em] text-primary">
+            Nuestra diferencia
+          </span>
+          <p className="mt-5 max-w-4xl text-2xl leading-relaxed md:text-3xl">
+            Cada espacio tiene un potencial único. En LIIT lo descubrimos, lo diseñamos y lo
+            convertimos en realidad con intención, criterio y detalle.
           </p>
         </Reveal>
       </section>
@@ -76,16 +88,16 @@ function Nosotros() {
         <Reveal>
           <div className="grid gap-10 border border-border bg-card p-10 md:grid-cols-12 md:p-16">
             <div className="md:col-span-7">
-              <span className="text-xs uppercase tracking-[0.3em] text-accent">Empresa hermana</span>
+              <span className="text-xs uppercase tracking-[0.3em] text-accent">
+                Empresa hermana
+              </span>
               <h2 className="mt-4 text-4xl md:text-5xl">
-                LIT × <span className="text-primary">AMBOSS</span>
+                LIIT × <span className="text-primary">AMBOSS</span>
               </h2>
               <p className="mt-6 max-w-xl text-foreground/70 leading-relaxed">
-                LIT Arquitectura trabaja de la mano con AMBOSS, su empresa
-                hermana. Esta alianza nos permite ofrecer un servicio
-                integral, combinando diseño arquitectónico de autor con
-                ejecución y desarrollo de obra a la altura de cada
-                proyecto.
+                LIIT Arquitectura trabaja de la mano con AMBOSS, su empresa hermana. Esta alianza
+                nos permite ofrecer un servicio integral, combinando diseño arquitectónico de autor
+                con ejecución y desarrollo de obra a la altura de cada proyecto.
               </p>
               <p className="mt-4 text-sm text-foreground/50">
                 Una visión, dos estudios, un mismo estándar.

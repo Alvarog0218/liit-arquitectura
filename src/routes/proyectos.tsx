@@ -2,54 +2,54 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { Reveal } from "@/components/lit/Reveal";
 import { BlueprintLine } from "@/components/lit/BlueprintLine";
-import projResidencial from "@/assets/project-residencial.jpg";
-import projComercial from "@/assets/project-comercial.jpg";
-import projInterior from "@/assets/project-interior.jpg";
-import projRemodel from "@/assets/project-remodelacion.jpg";
-import projRender from "@/assets/project-render.jpg";
-import projHosp from "@/assets/project-hospitalidad.jpg";
+import { Gallery } from "@/components/lit/Gallery";
+import { PROJECT_CATEGORIES, projects, type Project } from "@/data/projects";
+import { projectGalleryImages } from "@/data/projectImages";
 
 export const Route = createFileRoute("/proyectos")({
   head: () => ({
     meta: [
-      { title: "Proyectos — LIT Arquitectura" },
-      { name: "description", content: "Selección de proyectos de arquitectura, interiorismo y remodelación de LIT." },
-      { property: "og:title", content: "Proyectos · LIT Arquitectura" },
+      { title: "Proyectos — LIIT Arquitectura" },
+      {
+        name: "description",
+        content:
+          "Proyectos residenciales y comerciales donde estética, funcionalidad y experiencia se integran para crear lugares con identidad.",
+      },
+      { property: "og:title", content: "Proyectos · LIIT Arquitectura" },
       { property: "og:description", content: "Arquitectura contemporánea con identidad propia." },
     ],
   }),
   component: Proyectos,
 });
 
-const CATS = ["Todos", "Residencial", "Comercial", "Interiorismo", "Remodelación", "Render"] as const;
-
-const projects = [
-  { img: projResidencial, title: "Casa Mirador", cat: "Residencial", year: "2025", loc: "Valle Norte" },
-  { img: projComercial, title: "Oficinas Forge", cat: "Comercial", year: "2024", loc: "Distrito Central" },
-  { img: projInterior, title: "Apartamento Vino", cat: "Interiorismo", year: "2024", loc: "Centro Histórico" },
-  { img: projRemodel, title: "Recámara Olivo", cat: "Remodelación", year: "2024", loc: "Lomas del Sur" },
-  { img: projRender, title: "Villa Espejo", cat: "Render", year: "2025", loc: "Costa Pacífico" },
-  { img: projHosp, title: "Bistró Roble", cat: "Comercial", year: "2023", loc: "Barrio Antiguo" },
-];
-
 function Proyectos() {
-  const [filter, setFilter] = useState<(typeof CATS)[number]>("Todos");
-  const list = filter === "Todos" ? projects : projects.filter((p) => p.cat === filter);
+  const [filter, setFilter] = useState<(typeof PROJECT_CATEGORIES)[number]>("Todos");
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const list = filter === "Todos" ? projects : projects.filter((p) => p.category === filter);
+  const imageTotal = projects.reduce((sum, project) => sum + project.images, 0);
+  const planTotal = projects.reduce((sum, project) => sum + project.plans, 0);
 
   return (
     <div className="mx-auto max-w-7xl px-6 pt-16 pb-24">
-      <header className="mb-12">
-        <span className="text-xs uppercase tracking-[0.3em] text-primary">Portafolio</span>
-        <h1 className="mt-4 text-5xl md:text-7xl">Proyectos</h1>
-        <p className="mt-4 max-w-2xl text-foreground/70">
-          Cada proyecto es una oportunidad para experimentar, innovar y crear
-          lugares que inspiran.
-        </p>
-        <BlueprintLine className="mt-10 h-3 w-full text-foreground/30" />
+      <header className="mb-12 grid gap-10 md:grid-cols-12">
+        <div className="md:col-span-8">
+          <span className="text-xs uppercase tracking-[0.3em] text-primary">Portafolio LIIT</span>
+          <h1 className="mt-4 text-5xl md:text-7xl">Proyectos</h1>
+          <p className="mt-4 max-w-2xl text-foreground/70">
+            Una selección de trabajos reales para hogares y negocios: espacios pensados desde cero,
+            con intención, criterio y detalle.
+          </p>
+          <BlueprintLine className="mt-10 h-3 w-full text-foreground/30" />
+        </div>
+        <div className="grid grid-cols-3 border border-border md:col-span-4 md:self-end">
+          <Metric value={projects.length} label="proyectos" />
+          <Metric value={imageTotal} label="imágenes" />
+          <Metric value={planTotal} label="planos" />
+        </div>
       </header>
 
       <div className="mb-10 flex flex-wrap gap-2">
-        {CATS.map((c) => (
+        {PROJECT_CATEGORIES.map((c) => (
           <button
             key={c}
             onClick={() => setFilter(c)}
@@ -67,43 +67,53 @@ function Proyectos() {
       <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
         {list.map((p, i) => (
           <Reveal key={p.title} variant="module" delay={(i % 3) * 0.1}>
-            <article className="group relative cursor-pointer">
+            <article 
+              className="group relative cursor-pointer"
+              onClick={() => setSelectedProject(p)}
+            >
               <div className="relative aspect-[4/5] overflow-hidden bg-muted">
                 <img
-                  src={p.img}
+                  src={p.image}
                   alt={p.title}
                   loading="lazy"
                   width={1280}
                   height={960}
                   className="h-full w-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"
                 />
-                {/* persianas reveal */}
-                <div className="pointer-events-none absolute inset-0 grid grid-cols-5">
-                  {Array.from({ length: 5 }).map((_, idx) => (
-                    <div
-                      key={idx}
-                      className="origin-top scale-y-100 bg-ink/85 transition-transform duration-700 ease-[cubic-bezier(0.65,0,0.35,1)] group-hover:scale-y-0"
-                      style={{ transitionDelay: `${idx * 70}ms` }}
-                    />
-                  ))}
-                </div>
               </div>
               <div className="mt-4 flex items-end justify-between">
                 <div>
                   <div className="text-[10px] uppercase tracking-[0.25em] text-foreground/50">
-                    {p.cat} · {p.year}
+                    {p.category} · {p.scope}
                   </div>
                   <h3 className="mt-1 text-2xl">{p.title}</h3>
-                  <div className="mt-1 text-sm text-foreground/60">{p.loc}</div>
+                  <div className="mt-1 max-w-sm text-sm text-foreground/60">{p.summary}</div>
                 </div>
-                <div className="text-xs uppercase tracking-[0.2em] text-primary opacity-0 transition-opacity group-hover:opacity-100">
-                  Ver →
+                <div className="shrink-0 text-right text-[10px] uppercase tracking-[0.2em] text-primary">
+                  <div>{p.images} img</div>
+                  {p.plans > 0 && <div>{p.plans} planos</div>}
                 </div>
               </div>
             </article>
           </Reveal>
         ))}
       </div>
+
+      <Gallery
+        isOpen={!!selectedProject}
+        onClose={() => setSelectedProject(null)}
+        title={selectedProject?.title || ""}
+        images={selectedProject ? projectGalleryImages[selectedProject.title] || [selectedProject.image] : []}
+      />
+    </div>
+  );
+}
+
+function Metric({ value, label }: { value: number; label: string }) {
+  return (
+    <div className="border-r border-border p-4 last:border-r-0">
+      <div className="font-display text-3xl text-primary">{value}</div>
+      <div className="mt-1 text-[10px] uppercase tracking-[0.2em] text-foreground/50">{label}</div>
     </div>
   );
 }

@@ -1,16 +1,118 @@
 @import "tailwindcss" source(none);
-@source "../src";
 @import "tw-animate-css";
+@source "../src";
+
+@font-face {
+  font-family: "Anta";
+  src: url("./assets/fonts/Anta-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cocogoose";
+  src: url("./assets/fonts/Cocogoose-Pro-Thin-trial.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cocogoose";
+  src: url("./assets/fonts/Cocogoose-Pro-Thin-Italic-trial.ttf") format("truetype");
+  font-weight: 100;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cocogoose";
+  src: url("./assets/fonts/Cocogoose-Pro-Ultralight-trial.ttf") format("truetype");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cocogoose";
+  src: url("./assets/fonts/Cocogoose-Pro-Ultralight-Italic-trial.ttf") format("truetype");
+  font-weight: 200;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cocogoose";
+  src: url("./assets/fonts/Cocogoose-Pro-Light-trial.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cocogoose";
+  src: url("./assets/fonts/Cocogoose-Pro-Light-Italic-trial.ttf") format("truetype");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cocogoose";
+  src: url("./assets/fonts/Cocogoose-Pro-Semilight-trial.ttf") format("truetype");
+  font-weight: 350;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cocogoose";
+  src: url("./assets/fonts/Cocogoose-Pro-Semilight-Italic-trial.ttf") format("truetype");
+  font-weight: 350;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cocogoose";
+  src: url("./assets/fonts/Cocogoose-Pro-Regular-trial.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cocogoose";
+  src: url("./assets/fonts/Cocogoose-Pro-Italic-trial.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cocogoose";
+  src: url("./assets/fonts/Cocogoose-Pro-Bold-trial.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cocogoose";
+  src: url("./assets/fonts/Cocogoose-Pro-Bold-Italic-trial.ttf") format("truetype");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
 
 @custom-variant dark (&:is(.dark *));
 
 /*
- * LIT Arquitectura — design system from brand manual.
+ * LIIT Arquitectura — design system from brand manual.
  * Palette: #c01e4f (magenta), #4d1f2e (vino), #3b4d63 (azul pizarra), #465037 (oliva)
- * Typography: Anta (Google Fonts)
+ * Typography: Anta for titles, Cocogoose for body
  */
-
-@import url("https://fonts.googleapis.com/css2?family=Anta&display=swap");
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
@@ -20,7 +122,7 @@
   --radius-2xl: calc(var(--radius) + 8px);
   --radius-3xl: calc(var(--radius) + 12px);
   --radius-4xl: calc(var(--radius) + 16px);
-  --font-sans: "Anta", system-ui, sans-serif;
+  --font-sans: "Cocogoose", system-ui, sans-serif;
   --font-display: "Anta", system-ui, sans-serif;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -73,7 +175,7 @@
   --card-foreground: var(--ink);
   --popover: oklch(1 0 0);
   --popover-foreground: var(--ink);
-  /* Primary — LIT magenta #c01e4f */
+  /* Primary — LIIT magenta #c01e4f */
   --primary: oklch(0.53 0.21 8);
   --primary-foreground: oklch(0.985 0.005 80);
   /* Secondary / wine #4d1f2e */
@@ -150,10 +252,17 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
+    font-weight: 200;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: var(--font-display);
     letter-spacing: -0.01em;
   }
@@ -161,7 +270,9 @@
 
 /* Blueprint draw animation — used by inline SVGs */
 @keyframes blueprint-draw {
-  to { stroke-dashoffset: 0; }
+  to {
+    stroke-dashoffset: 0;
+  }
 }
 .blueprint-line {
   stroke-dasharray: 1200;
@@ -171,22 +282,9 @@
   animation: blueprint-draw 2.4s ease-out forwards;
 }
 
-/* Curtain reveal */
-@keyframes curtain-open {
-  0% { clip-path: inset(0 50% 0 50%); }
-  100% { clip-path: inset(0 0 0 0); }
-}
-.curtain-reveal {
-  clip-path: inset(0 50% 0 50%);
-}
-.curtain-reveal.in-view {
-  animation: curtain-open 1.1s cubic-bezier(0.65, 0, 0.35, 1) forwards;
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .blueprint-line, .curtain-reveal {
+  .blueprint-line {
     animation: none !important;
     stroke-dashoffset: 0 !important;
-    clip-path: none !important;
   }
 }

@@ -1,51 +1,102 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Compass, Layers, Ruler, Hammer, Eye, Building2 } from "lucide-react";
+import {
+  BadgeDollarSign,
+  Building2,
+  ClipboardCheck,
+  Compass,
+  Eye,
+  FileCheck2,
+  Hammer,
+  Layers,
+} from "lucide-react";
 import { Reveal } from "@/components/lit/Reveal";
 import { BlueprintLine } from "@/components/lit/BlueprintLine";
 
 export const Route = createFileRoute("/servicios")({
   head: () => ({
     meta: [
-      { title: "Servicios — LIT Arquitectura" },
-      { name: "description", content: "Diseño arquitectónico, interiorismo, remodelación, render y dirección de obra." },
-      { property: "og:title", content: "Servicios · LIT Arquitectura" },
-      { property: "og:description", content: "Bloques que se ensamblan en tu espacio." },
+      { title: "Servicios — LIIT Arquitectura" },
+      {
+        name: "description",
+        content:
+          "Arquitectura, diseño, construcción, remodelación, visualización 3D, consultorías, curadurías y presupuestos de obra.",
+      },
+      { property: "og:title", content: "Servicios · LIIT Arquitectura" },
+      { property: "og:description", content: "Lo que hacemos por tu espacio." },
     ],
   }),
   component: Servicios,
 });
 
 const SERVICES = [
-  { icon: Compass, title: "Diseño arquitectónico", desc: "Proyectos integrales desde el concepto hasta la licencia, pensando cada metro como una experiencia." },
-  { icon: Layers, title: "Interiorismo", desc: "Atmósferas interiores con identidad, materialidad y luz cuidadosamente calibradas." },
-  { icon: Hammer, title: "Remodelación", desc: "Transformamos espacios existentes respetando su esencia y elevando su carácter." },
-  { icon: Eye, title: "Consultoría", desc: "Asesoría arquitectónica para decisiones críticas: viabilidad, programa, anteproyecto." },
-  { icon: Building2, title: "Renderización 3D", desc: "Visualizaciones fotorrealistas que comunican el proyecto antes de construirlo." },
-  { icon: Ruler, title: "Dirección de obra", desc: "Acompañamiento técnico para que la obra construida iguale al proyecto diseñado." },
+  {
+    icon: Compass,
+    title: "Arquitectura",
+    desc: "Diseñamos propuestas arquitectónicas pensadas para transformar ideas en espacios funcionales, memorables y con identidad.",
+  },
+  {
+    icon: Layers,
+    title: "Diseño",
+    desc: "Creamos interiores y ambientes que reflejan tu estilo, tus necesidades y la experiencia que quieres transmitir.",
+  },
+  {
+    icon: Building2,
+    title: "Construcción",
+    desc: "Acompañamos la materialización del proyecto cuidando el proceso, las decisiones técnicas y cada detalle de ejecución.",
+  },
+  {
+    icon: Hammer,
+    title: "Remodelación",
+    desc: "Renovamos hogares, locales y espacios comerciales para hacerlos más funcionales, atractivos y memorables.",
+  },
+  {
+    icon: Eye,
+    title: "Visualización en 3D",
+    desc: "Desarrollamos modelos, renders e imágenes arquitectónicas para ver el espacio antes de hacerlo realidad.",
+  },
+  {
+    icon: ClipboardCheck,
+    title: "Consultorías",
+    desc: "Te orientamos con claridad para tomar decisiones sobre viabilidad, distribución, materiales, alcance y ejecución.",
+  },
+  {
+    icon: FileCheck2,
+    title: "Trámite ante Curadurías",
+    desc: "Gestionamos documentación y criterios técnicos para que el proyecto avance con mayor orden y seguridad.",
+  },
+  {
+    icon: BadgeDollarSign,
+    title: "Presupuestos de obra",
+    desc: "Estructuramos presupuestos claros para entender costos, prioridades y decisiones antes de iniciar la ejecución.",
+  },
 ];
 
 function Servicios() {
   return (
     <div className="mx-auto max-w-7xl px-6 pt-16 pb-24">
       <header className="mb-12 max-w-3xl">
-        <span className="text-xs uppercase tracking-[0.3em] text-primary">Qué hacemos</span>
+        <span className="text-xs uppercase tracking-[0.3em] text-primary">Lo que hacemos</span>
         <h1 className="mt-4 text-5xl md:text-7xl">Servicios</h1>
         <p className="mt-4 text-foreground/70">
-          Seis módulos que se ensamblan en tu proyecto. Tomamos los que
-          necesitas y los integramos en una sola visión.
+          Un buen diseño puede cambiar la forma en la que vives, trabajas o recibes a tus clientes.
+          Por eso cada proyecto inicia con escucha, análisis y una mirada profunda sobre cómo
+          aprovechar mejor cada metro cuadrado.
         </p>
         <BlueprintLine className="mt-10 h-3 w-full text-foreground/30" />
       </header>
 
       <div className="grid gap-px bg-border">
-        <div className="grid gap-px bg-border md:grid-cols-3">
+        <div className="grid gap-px bg-border md:grid-cols-2 lg:grid-cols-4">
           {SERVICES.map((s, i) => (
-            <Reveal key={s.title} variant="module" delay={(i % 3) * 0.1} className="bg-background">
+            <Reveal key={s.title} variant="module" delay={(i % 4) * 0.1} className="bg-background">
               <div className="group flex h-full flex-col justify-between p-10 transition-colors hover:bg-primary hover:text-primary-foreground">
                 <div className="flex items-center justify-between">
-                  <s.icon className="h-8 w-8 text-primary transition-colors group-hover:text-primary-foreground" strokeWidth={1.2} />
+                  <s.icon
+                    className="h-8 w-8 text-primary transition-colors group-hover:text-primary-foreground"
+                    strokeWidth={1.2}
+                  />
                   <span className="text-[10px] uppercase tracking-[0.25em] text-foreground/40 group-hover:text-primary-foreground/70">
-                    0{i + 1}
+                    {String(i + 1).padStart(2, "0")}
                   </span>
                 </div>
                 <div className="mt-16">
@@ -65,8 +116,8 @@ function Servicios() {
           <div className="md:col-span-2">
             <h2 className="text-3xl md:text-4xl">¿No sabes por dónde empezar?</h2>
             <p className="mt-3 text-foreground/70">
-              Agenda una consulta inicial sin compromiso. Te ayudamos a
-              traducir tu idea en un plan claro.
+              Tu espacio tiene más potencial del que imaginas. Te ayudamos a convertirlo en diseño,
+              experiencia y valor.
             </p>
           </div>
           <Link

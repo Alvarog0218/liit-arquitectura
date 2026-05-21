@@ -74,11 +74,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "LIT Arquitectura — Diseñamos atmósferas" },
-      { name: "description", content: "Estudio de arquitectura contemporánea. Diseño que se siente, se habita y se vive. Empresa hermana de AMBOSS." },
-      { name: "author", content: "LIT Arquitectura" },
-      { property: "og:title", content: "LIT Arquitectura" },
-      { property: "og:description", content: "Arquitectura contemporánea que dialoga con la luz, los materiales y las personas." },
+      { title: "LIIT Arquitectura — Espacios con intención" },
+      {
+        name: "description",
+        content:
+          "Transformamos ideas en espacios residenciales y comerciales con intención, funcionalidad y valor.",
+      },
+      { name: "author", content: "LIIT Arquitectura" },
+      { property: "og:title", content: "LIIT Arquitectura" },
+      {
+        property: "og:description",
+        content: "Espacios con intención. Diseño con carácter.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
     ],
@@ -94,9 +101,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Organization",
-          name: "LIT Arquitectura",
-          description: "Estudio de arquitectura contemporánea.",
-          slogan: "Diseñamos atmósferas, sensaciones y formas de habitar el mundo.",
+          name: "LIIT Arquitectura",
+          description:
+            "Estudio de arquitectura, diseño, construcción, remodelación y visualización 3D.",
+          slogan: "Espacios con intención. Diseño con carácter.",
           subOrganization: { "@type": "Organization", name: "AMBOSS" },
         }),
       },
@@ -110,7 +118,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="es">
       <head>
         <HeadContent />
       </head>
