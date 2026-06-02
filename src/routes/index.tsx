@@ -8,6 +8,7 @@ import { featuredProjects, type Project } from "@/data/projects";
 import { projectGalleryImages } from "@/data/projectImages";
 import ambossLogo from "@/assets/A.png";
 import heroLiit from "@/assets/hero-liit.png";
+import heroLiitVertical from "@/assets/hero-liit-vertical.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -56,12 +57,20 @@ function Hero() {
   return (
     <section ref={ref} className="relative isolate min-h-[88svh] overflow-hidden">
       <motion.img
+        src={heroLiitVertical}
+        alt="Interior arquitectónico contemporáneo de LIIT"
+        width={943}
+        height={1635}
+        style={{ y: yBg }}
+        className="absolute inset-0 -z-20 h-[calc(100%+80px)] w-full object-cover object-center md:hidden"
+      />
+      <motion.img
         src={heroLiit}
         alt="Interior arquitectónico contemporáneo de LIIT"
         width={1672}
         height={921}
         style={{ y: yBg }}
-        className="absolute inset-0 -z-20 h-[calc(100%+80px)] w-full object-cover object-[60%_center]"
+        className="absolute inset-0 -z-20 hidden h-[calc(100%+80px)] w-full object-cover object-[60%_center] md:block"
       />
 
       <div className="mx-auto flex min-h-[88svh] max-w-7xl items-center px-6 py-24">
