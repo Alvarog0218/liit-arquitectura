@@ -1,12 +1,13 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion, useScroll, useTransform } from "motion/react";
 import { useRef, useState } from "react";
-import { ArrowRight, BadgeDollarSign, Compass, Eye, Layers } from "lucide-react";
-import { BlueprintLine } from "@/components/lit/BlueprintLine";
+import { ArrowRight, BadgeDollarSign, Compass, Eye } from "lucide-react";
 import { Reveal } from "@/components/lit/Reveal";
 import { Gallery } from "@/components/lit/Gallery";
-import { featuredProjects, heroProject, type Project } from "@/data/projects";
+import { featuredProjects, type Project } from "@/data/projects";
 import { projectGalleryImages } from "@/data/projectImages";
+import ambossLogo from "@/assets/A.png";
+import heroLiit from "@/assets/hero-liit.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -49,15 +50,22 @@ function Home() {
 function Hero() {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const yPlan = useTransform(scrollYProgress, [0, 1], [0, -120]);
-  const yElev = useTransform(scrollYProgress, [0, 1], [0, -60]);
-  const yPhoto = useTransform(scrollYProgress, [0, 1], [0, -30]);
+  const yBg = useTransform(scrollYProgress, [0, 1], [0, -60]);
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
   return (
-    <section ref={ref} className="relative isolate overflow-hidden">
-      <div className="relative mx-auto grid min-h-[92vh] max-w-7xl grid-cols-1 items-center gap-12 px-6 pt-12 pb-24 md:grid-cols-12">
-        <motion.div style={{ opacity }} className="md:col-span-6 z-10">
+    <section ref={ref} className="relative isolate min-h-[88svh] overflow-hidden">
+      <motion.img
+        src={heroLiit}
+        alt="Interior arquitectónico contemporáneo de LIIT"
+        width={1672}
+        height={921}
+        style={{ y: yBg }}
+        className="absolute inset-0 -z-20 h-[calc(100%+80px)] w-full object-cover object-[60%_center]"
+      />
+
+      <div className="mx-auto flex min-h-[88svh] max-w-7xl items-center px-6 py-24">
+        <motion.div style={{ opacity }} className="max-w-2xl">
           <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-primary">
             <span className="h-px w-8 bg-primary" /> Arquitectura que transforma
           </span>
@@ -86,39 +94,7 @@ function Hero() {
             </Link>
           </div>
         </motion.div>
-
-        <div className="relative md:col-span-6 md:h-[600px]">
-          {/* Layer 1: plan */}
-          <motion.div style={{ y: yPlan }} className="absolute -left-8 top-4 hidden w-72 md:block">
-            <BlueprintLine variant="plan" className="h-44 w-full text-olive" />
-          </motion.div>
-          {/* Layer 2: elevation */}
-          <motion.div
-            style={{ y: yElev }}
-            className="absolute -bottom-4 -right-4 hidden w-80 md:block"
-          >
-            <BlueprintLine variant="elevation" className="h-36 w-full text-ink/60" />
-          </motion.div>
-          {/* Layer 3: photo */}
-          <motion.div
-            style={{ y: yPhoto }}
-            className="relative aspect-[4/5] overflow-hidden md:aspect-auto md:h-full"
-          >
-            <img
-              src={heroProject.image}
-              alt={heroProject.title}
-              width={1600}
-              height={1024}
-              className="h-full w-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-tr from-wine/30 via-transparent to-transparent" />
-            <div className="absolute bottom-4 left-4 bg-background/90 px-3 py-1 text-[10px] uppercase tracking-[0.25em]">
-              Proyecto / {heroProject.title}
-            </div>
-          </motion.div>
-        </div>
       </div>
-      <BlueprintLine className="h-3 w-full text-foreground/30" />
     </section>
   );
 }
@@ -256,13 +232,14 @@ function Amboss() {
               arquitectónico, construcción y ejecución integral cuando el proyecto lo requiere.
             </p>
           </div>
-          <div className="flex items-center justify-center border border-dashed border-border bg-muted/30 p-12">
-            <div className="text-center">
-              <div className="font-display text-4xl tracking-[0.2em] text-foreground/80">AMBOSS</div>
-              <div className="mt-2 text-[10px] uppercase tracking-[0.3em] text-foreground/40">
-                Logo placeholder
-              </div>
-            </div>
+          <div className="flex min-h-64 items-center justify-center border border-border bg-ink p-8 md:p-12">
+            <img
+              src={ambossLogo}
+              alt="Logo de AMBOSS"
+              width={256}
+              height={256}
+              className="h-auto w-full max-w-56 object-contain"
+            />
           </div>
         </div>
       </Reveal>

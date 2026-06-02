@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Reveal } from "@/components/lit/Reveal";
 import { BlueprintLine } from "@/components/lit/BlueprintLine";
 import { heroProject } from "@/data/projects";
+import ambossLogo from "@/assets/A.png";
 
 export const Route = createFileRoute("/nosotros")({
   head: () => ({
@@ -103,13 +104,14 @@ function Nosotros() {
                 Una visión, dos estudios, un mismo estándar.
               </p>
             </div>
-            <div className="flex items-center justify-center border border-dashed border-border bg-muted/30 p-12 md:col-span-5">
-              <div className="text-center">
-                <div className="text-5xl tracking-[0.2em] text-foreground/80">AMBOSS</div>
-                <div className="mt-3 text-[10px] uppercase tracking-[0.3em] text-foreground/40">
-                  Logo placeholder
-                </div>
-              </div>
+            <div className="flex min-h-64 items-center justify-center border border-border bg-ink p-8 md:col-span-5 md:p-12">
+              <img
+                src={ambossLogo}
+                alt="Logo de AMBOSS"
+                width={256}
+                height={256}
+                className="h-auto w-full max-w-56 object-contain"
+              />
             </div>
           </div>
         </Reveal>
