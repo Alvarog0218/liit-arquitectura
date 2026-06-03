@@ -51,30 +51,39 @@ function Home() {
 function Hero() {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const yBg = useTransform(scrollYProgress, [0, 1], [0, -60]);
+  const yBg = useTransform(scrollYProgress, [0, 1], ["0%", "15%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
   return (
-    <section ref={ref} className="relative isolate min-h-[88svh] overflow-hidden">
-      <motion.img
-        src={heroLiitVertical}
-        alt="Interior arquitectónico contemporáneo de LIIT"
-        width={943}
-        height={1635}
-        style={{ y: yBg }}
-        className="absolute inset-0 -z-20 h-[calc(100%+80px)] w-full object-cover object-center md:hidden"
-      />
-      <motion.img
-        src={heroLiit}
-        alt="Interior arquitectónico contemporáneo de LIIT"
-        width={1672}
-        height={921}
-        style={{ y: yBg }}
-        className="absolute inset-0 -z-20 hidden h-[calc(100%+80px)] w-full object-cover object-[60%_center] md:block"
-      />
+    <section ref={ref} className="relative isolate min-h-[85vh] w-full overflow-hidden">
+      {/* Mobile Image */}
+      <motion.div 
+        style={{ y: yBg }} 
+        className="absolute inset-0 -z-20 h-[120%] w-full md:hidden"
+      >
+        <img
+          src={heroLiitVertical}
+          alt="Interior arquitectónico contemporáneo de LIIT"
+          className="h-full w-full object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-black/20" />
+      </motion.div>
 
-      <div className="mx-auto flex min-h-[88svh] max-w-7xl items-center px-6 py-24">
-        <motion.div style={{ opacity }} className="max-w-2xl">
+      {/* Desktop Image */}
+      <motion.div 
+        style={{ y: yBg }} 
+        className="absolute inset-0 -z-20 hidden h-[120%] w-full md:block"
+      >
+        <img
+          src={heroLiit}
+          alt="Interior arquitectónico contemporáneo de LIIT"
+          className="h-full w-full object-cover object-[center_30%]"
+        />
+        <div className="absolute inset-0 bg-black/10" />
+      </motion.div>
+
+      <div className="mx-auto flex min-h-[85vh] max-w-7xl items-center px-6 py-24">
+        <motion.div style={{ opacity }} className="relative z-10 max-w-2xl">
           <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-primary">
             <span className="h-px w-8 bg-primary" /> Arquitectura que transforma
           </span>

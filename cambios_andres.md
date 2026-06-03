@@ -48,3 +48,11 @@
 ### Cambiado
 - **Layout Global**: Se añadió un padding superior (`pt-20`) al contenedor `main` en `src/routes/__root.tsx`. Esto asegura que el Hero de la página de inicio y el contenido de todas las subpáginas comiencen debajo de la barra de navegación fija, evitando solapamientos no deseados.
 - **Optimización de Subpáginas**: Se redujo el padding superior interno en `proyectos.tsx`, `servicios.tsx`, `contacto.tsx`, `nosotros.tsx` y `proceso.tsx` para mantener un equilibrio visual consistente con el nuevo ajuste global.
+
+## [2026-06-03] - Optimización Responsiva: Hero Image
+
+### Cambiado
+- **Adaptabilidad de Imagen**: Se rediseñó el componente `Hero` en la página de inicio para garantizar que las imágenes de fondo se adapten perfectamente a cualquier tamaño de pantalla. 
+- **Enfoque Visual**: Se ajustó el `object-position` para centrar los elementos clave de la arquitectura tanto en versiones móviles (vertical) como de escritorio.
+- **Efecto Parallax**: Se optimizó la animación de desplazamiento para evitar espacios en blanco, expandiendo el contenedor de la imagen al 120% del viewport.
+- **Legibilidad**: Se añadieron capas de contraste sutiles (`overlay`) sobre las imágenes del Hero para asegurar que el texto sea siempre legible independientemente de la luminosidad de la foto.
