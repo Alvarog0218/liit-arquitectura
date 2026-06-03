@@ -35,8 +35,10 @@
 ### Cambiado
 - Se eliminaron los archivos estáticos temporales (`simulator.html`, `simulator.js`) tras su integración exitosa en el flujo de React/TanStack.
 
-## [2026-06-03] - Actualización de Imágenes de Portafolio
+## [2026-06-03] - Integración Visual: Simulador de Proyectos
 
 ### Cambiado
-- **Portadas de Proyectos**: Se actualizaron las imágenes principales de todos los proyectos en `src/data/projects.ts`. Ahora utilizan las versiones optimizadas `.webp` localizadas en la carpeta `src/proyectos/`.
-- **Consistencia Visual**: Se corrigieron discrepancias en los nombres de archivos para asegurar que cada proyecto muestre su miniatura correcta.
+- **Integración con Layout**: Se eliminó la estructura independiente de la página de simulador para integrarla con el `Header` y `Footer` globales del sitio.
+- **Consistencia Visual**: Se rediseñó la interfaz del simulador en `src/routes/simulador.tsx` para usar las mismas variables de color, tipografía (Anta) y estilos de secciones que el resto de la aplicación.
+- **Refinamiento de UI**: Se optimizaron los controles (inputs, radio buttons, sliders) para que armonicen con el tema vinotinto/claro, incluyendo animaciones de transición entre pasos.
+- **Limpieza de CSS**: Se simplificó `src/simulator.css` eliminando redundancias y enfocándolo exclusivamente en los componentes interactivos del simulador.

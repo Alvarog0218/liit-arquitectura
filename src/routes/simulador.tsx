@@ -1,27 +1,38 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { Reveal } from "@/components/lit/Reveal";
+import { BlueprintLine } from "@/components/lit/BlueprintLine";
 import "@/simulator.css";
 
 export const Route = createFileRoute("/simulador")({
+  head: () => ({
+    meta: [
+      { title: "Simulador — LIIT Arquitectura" },
+      {
+        name: "description",
+        content: "Calcula el costo estimado de tu próximo proyecto de arquitectura o diseño con nuestra herramienta interactiva.",
+      },
+    ],
+  }),
   component: Simulator,
 });
 
 const SIMULATOR_RATES = {
   baseCostPerSqm: {
-    residencial: 2500000, // COP por m2
+    residencial: 2500000,
     comercial: 2200000,
     industrial: 1800000,
   },
   finishMultipliers: {
-    standard: 1.0, // Base AMBOSS
-    premium: 1.35, // Mezcla
-    luxury: 1.8, // High-end LIIT
+    standard: 1.0,
+    premium: 1.35,
+    luxury: 1.8,
   },
   addons: {
-    smart: 15000000, // Costo fijo base estimado
-    eco: 25000000, // Paneles solares
-    landscape: 12000000, // Paisajismo
-    interior: 35000000, // Diseño Interior completo
+    smart: 15000000,
+    eco: 25000000,
+    landscape: 12000000,
+    interior: 35000000,
   },
 };
 
@@ -77,238 +88,186 @@ function Simulator() {
   };
 
   return (
-    <div className="simulator-page min-h-screen">
-      {/* Neutral Header */}
-      <header className="simulator-header">
-        <Link to="/" className="back-link">
-          ← Volver al Inicio
-        </Link>
-        <div className="combined-logo">
-          LIIT <span>x</span> AMBOSS
-        </div>
-        <div className="header-subtitle">Simulador de Construcción y Diseño</div>
+    <div className="mx-auto max-w-7xl px-6 pt-16 pb-24 simulator-page-integrated">
+      <header className="mb-12 max-w-3xl">
+        <span className="text-xs uppercase tracking-[0.3em] text-primary">Herramienta Interactiva</span>
+        <h1 className="mt-4 text-5xl md:text-7xl">Simulador</h1>
+        <p className="mt-4 text-foreground/70">
+          Obtén una referencia inicial del costo de tu proyecto. Nuestra herramienta combina 
+          parámetros de construcción técnica con niveles de diseño arquitectónico.
+        </p>
+        <BlueprintLine className="mt-10 h-3 w-full text-foreground/30" />
       </header>
 
-      <main className="simulator-layout">
+      <main className="simulator-layout-integrated grid gap-12 lg:grid-cols-12">
         {/* Left Column: Controls */}
-        <section className="control-panel">
-          <div className="step-indicator">
-            Paso {currentStep + 1} de {totalSteps}
+        <section className="control-panel-integrated lg:col-span-8">
+          <div className="mb-8 flex items-center justify-between border-b border-white/10 pb-4">
+            <span className="text-xs uppercase tracking-[0.2em] text-primary font-bold">
+              Paso {currentStep + 1} de {totalSteps}
+            </span>
+            <div className="flex gap-2">
+              {Array.from({ length: totalSteps }).map((_, i) => (
+                <div 
+                  key={i} 
+                  className={`h-1 w-8 transition-colors ${i <= currentStep ? "bg-primary" : "bg-white/10"}`}
+                />
+              ))}
+            </div>
           </div>
 
-          {/* STEP 1: Type of Project */}
-          {currentStep === 0 && (
-            <div className="step-container active-step">
-              <div className="sim-group">
-                <h3 className="sim-title">1. Tipo de Proyecto</h3>
-                <div className="options-grid project-types">
-                  {Object.keys(SIMULATOR_RATES.baseCostPerSqm).map((type) => (
-                    <label key={type} className="sim-card">
-                      <input
-                        type="radio"
-                        name="projectType"
-                        value={type}
-                        checked={projectType === type}
-                        onChange={(e) => setProjectType(e.target.value as any)}
-                      />
-                      <div className="card-content">
-                        <h4 className="capitalize">{type}</h4>
-                        <p>{type === "residencial" ? "Casas, Apartamentos" : type === "comercial" ? "Locales, Oficinas" : "Bodegas, Plantas"}</p>
-                      </div>
-                    </label>
-                  ))}
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* STEP 2: Square Footage Area */}
-          {currentStep === 1 && (
-            <div className="step-container active-step">
-              <div className="sim-group">
-                <h3 className="sim-title">2. Área Total (m²)</h3>
-                <div className="range-container">
-                  <input
-                    type="range"
-                    min="50"
-                    max="2000"
-                    value={area}
-                    step="10"
-                    onChange={(e) => setArea(parseInt(e.target.value))}
-                  />
-                  <div className="range-value">
-                    <span>{area}</span> m²
+          <Reveal key={currentStep} variant="fade">
+            <div className="min-h-[400px]">
+              {/* STEP 1: Type of Project */}
+              {currentStep === 0 && (
+                <div className="sim-group">
+                  <h3 className="mb-8 text-2xl uppercase tracking-tight">1. ¿Qué tipo de proyecto tienes en mente?</h3>
+                  <div className="grid gap-4 md:grid-cols-3">
+                    {Object.keys(SIMULATOR_RATES.baseCostPerSqm).map((type) => (
+                      <label key={type} className={`cursor-pointer border p-6 transition-all ${projectType === type ? "border-primary bg-primary/10" : "border-white/10 hover:border-white/30"}`}>
+                        <input
+                          type="radio"
+                          name="projectType"
+                          className="hidden"
+                          value={type}
+                          checked={projectType === type}
+                          onChange={(e) => setProjectType(e.target.value as any)}
+                        />
+                        <h4 className="text-lg uppercase tracking-wider">{type}</h4>
+                        <p className="mt-2 text-sm text-foreground/60">
+                          {type === "residencial" ? "Casas, Apartamentos" : type === "comercial" ? "Locales, Oficinas" : "Bodegas, Plantas"}
+                        </p>
+                      </label>
+                    ))}
                   </div>
                 </div>
-              </div>
-            </div>
-          )}
+              )}
 
-          {/* STEP 3: Materials & Finishes */}
-          {currentStep === 2 && (
-            <div className="step-container active-step">
-              <div className="sim-group">
-                <h3 className="sim-title">3. Calidad de Acabados & Materiales</h3>
-                <div className="options-grid finish-types">
-                  <label className="sim-card">
+              {/* STEP 2: Square Footage Area */}
+              {currentStep === 1 && (
+                <div className="sim-group">
+                  <h3 className="mb-8 text-2xl uppercase tracking-tight">2. ¿Cuál es el área aproximada?</h3>
+                  <div className="py-12">
                     <input
-                      type="radio"
-                      name="finishQuality"
-                      value="standard"
-                      checked={finishQuality === "standard"}
-                      onChange={(e) => setFinishQuality(e.target.value as any)}
+                      type="range"
+                      min="50"
+                      max="2000"
+                      value={area}
+                      step="10"
+                      className="w-full accent-primary"
+                      onChange={(e) => setArea(parseInt(e.target.value))}
                     />
-                    <div className="card-content">
-                      <h4>Estándar</h4>
-                      <p>Materiales funcionales y duraderos (AMBOSS Core)</p>
+                    <div className="mt-6 text-center">
+                      <span className="text-6xl font-display text-primary">{area}</span>
+                      <span className="ml-2 text-xl uppercase tracking-widest text-foreground/40">m²</span>
                     </div>
-                  </label>
-                  <label className="sim-card">
-                    <input
-                      type="radio"
-                      name="finishQuality"
-                      value="premium"
-                      checked={finishQuality === "premium"}
-                      onChange={(e) => setFinishQuality(e.target.value as any)}
-                    />
-                    <div className="card-content">
-                      <h4>Premium</h4>
-                      <p>Equilibrio entre diseño e ingeniería</p>
-                    </div>
-                  </label>
-                  <label className="sim-card">
-                    <input
-                      type="radio"
-                      name="finishQuality"
-                      value="luxury"
-                      checked={finishQuality === "luxury"}
-                      onChange={(e) => setFinishQuality(e.target.value as any)}
-                    />
-                    <div className="card-content">
-                      <h4>Vanguardista</h4>
-                      <p>Acabados disruptivos y experimentales (LIIT Core)</p>
-                    </div>
-                  </label>
+                  </div>
                 </div>
-              </div>
-            </div>
-          )}
+              )}
 
-          {/* STEP 4: Special Add-ons */}
-          {currentStep === 3 && (
-            <div className="step-container active-step">
-              <div className="sim-group">
-                <h3 className="sim-title">4. Especialidades & Diseño Adicional</h3>
-                <div className="toggle-list">
-                  <label className="toggle-item">
-                    <div className="toggle-info">
-                      <h4>Domótica Smart Home</h4>
-                      <p>Integración tecnológica integral.</p>
-                    </div>
-                    <div className="toggle-switch">
-                      <input
-                        type="checkbox"
-                        checked={addons.smart}
-                        onChange={(e) => setAddons({ ...addons, smart: e.target.checked })}
-                      />
-                      <span className="slider round"></span>
-                    </div>
-                  </label>
-                  <label className="toggle-item">
-                    <div className="toggle-info">
-                      <h4>Sostenibilidad (Paneles Solares)</h4>
-                      <p>Energía verde y certificación LEED.</p>
-                    </div>
-                    <div className="toggle-switch">
-                      <input
-                        type="checkbox"
-                        checked={addons.eco}
-                        onChange={(e) => setAddons({ ...addons, eco: e.target.checked })}
-                      />
-                      <span className="slider round"></span>
-                    </div>
-                  </label>
-                  <label className="toggle-item">
-                    <div className="toggle-info">
-                      <h4>Paisajismo Premium</h4>
-                      <p>Diseño de exteriores y jardines conceptuales.</p>
-                    </div>
-                    <div className="toggle-switch">
-                      <input
-                        type="checkbox"
-                        checked={addons.landscape}
-                        onChange={(e) => setAddons({ ...addons, landscape: e.target.checked })}
-                      />
-                      <span className="slider round"></span>
-                    </div>
-                  </label>
-                  <label className="toggle-item">
-                    <div className="toggle-info">
-                      <h4>Interiorismo a la Medida</h4>
-                      <p>Diseño de mobiliario e iluminación (LIIT Studio).</p>
-                    </div>
-                    <div className="toggle-switch">
-                      <input
-                        type="checkbox"
-                        checked={addons.interior}
-                        onChange={(e) => setAddons({ ...addons, interior: e.target.checked })}
-                      />
-                      <span className="slider round"></span>
-                    </div>
-                  </label>
+              {/* STEP 3: Materials & Finishes */}
+              {currentStep === 2 && (
+                <div className="sim-group">
+                  <h3 className="mb-8 text-2xl uppercase tracking-tight">3. Nivel de acabado y complejidad</h3>
+                  <div className="grid gap-4 md:grid-cols-3">
+                    {[
+                      { id: "standard", label: "Estándar", desc: "Materiales funcionales y duraderos." },
+                      { id: "premium", label: "Premium", desc: "Equilibrio entre diseño e ingeniería." },
+                      { id: "luxury", label: "Vanguardista", desc: "Acabados disruptivos y experimentales." },
+                    ].map((f) => (
+                      <label key={f.id} className={`cursor-pointer border p-6 transition-all ${finishQuality === f.id ? "border-primary bg-primary/10" : "border-white/10 hover:border-white/30"}`}>
+                        <input
+                          type="radio"
+                          name="finishQuality"
+                          className="hidden"
+                          value={f.id}
+                          checked={finishQuality === f.id}
+                          onChange={(e) => setFinishQuality(e.target.value as any)}
+                        />
+                        <h4 className="text-lg uppercase tracking-wider">{f.label}</h4>
+                        <p className="mt-2 text-sm text-foreground/60">{f.desc}</p>
+                      </label>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              )}
+
+              {/* STEP 4: Special Add-ons */}
+              {currentStep === 3 && (
+                <div className="sim-group">
+                  <h3 className="mb-8 text-2xl uppercase tracking-tight">4. Componentes adicionales</h3>
+                  <div className="grid gap-4 md:grid-cols-2">
+                    {[
+                      { id: "smart", label: "Domótica Smart Home", desc: "Integración tecnológica integral." },
+                      { id: "eco", label: "Sostenibilidad", desc: "Paneles solares y eficiencia." },
+                      { id: "landscape", label: "Paisajismo", desc: "Diseño de exteriores conceptual." },
+                      { id: "interior", label: "Interiorismo", desc: "Diseño de mobiliario a medida." },
+                    ].map((addon) => (
+                      <label key={addon.id} className={`flex cursor-pointer items-start gap-4 border p-6 transition-all ${addons[addon.id as keyof typeof addons] ? "border-primary bg-primary/10" : "border-white/10 hover:border-white/30"}`}>
+                        <input
+                          type="checkbox"
+                          className="mt-1 accent-primary"
+                          checked={addons[addon.id as keyof typeof addons]}
+                          onChange={(e) => setAddons({ ...addons, [addon.id]: e.target.checked })}
+                        />
+                        <div>
+                          <h4 className="text-lg uppercase tracking-wider">{addon.label}</h4>
+                          <p className="mt-1 text-sm text-foreground/60">{addon.desc}</p>
+                        </div>
+                      </label>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
-          )}
+          </Reveal>
 
           {/* Navigation Controls */}
-          <div className="step-navigation">
-            {currentStep > 0 && (
-              <button type="button" className="btn btn-secondary" onClick={handlePrev}>
-                Anterior
-              </button>
-            )}
-            {currentStep < totalSteps - 1 && (
-              <button type="button" className="btn btn-primary" onClick={handleNext}>
-                Siguiente
-              </button>
-            )}
+          <div className="mt-12 flex justify-between border-t border-white/10 pt-8">
+            <button 
+              type="button" 
+              className={`px-8 py-3 text-xs uppercase tracking-[0.2em] transition-all ${currentStep === 0 ? "opacity-0 pointer-events-none" : "border border-white/20 hover:border-white"}`}
+              onClick={handlePrev}
+            >
+              Anterior
+            </button>
+            <button 
+              type="button" 
+              className={`bg-primary px-10 py-3 text-xs uppercase tracking-[0.2em] text-primary-foreground transition-all hover:bg-white hover:text-black ${currentStep === totalSteps - 1 ? "hidden" : ""}`}
+              onClick={handleNext}
+            >
+              Siguiente
+            </button>
           </div>
         </section>
 
         {/* Right Column: Summary Panel */}
-        <aside className="summary-panel-wrapper">
-          <div className="summary-panel">
-            <h2>Costo Estimado</h2>
-            <div className="price-display">{formatCOP(estimate.total)}</div>
-            <div className="currency-note">* Valores de referencia aproximados en COP</div>
+        <aside className="lg:col-span-4">
+          <div className="sticky top-32 border border-white/10 bg-card/30 p-8 backdrop-blur-md">
+            <h2 className="text-xs uppercase tracking-[0.3em] text-foreground/40">Inversión Estimada</h2>
+            <div className="mt-4 text-4xl font-display text-primary">{formatCOP(estimate.total)}</div>
+            <p className="mt-2 text-[10px] uppercase tracking-wider text-foreground/30">* Valores de referencia en COP</p>
 
-            <div className="summary-breakdown">
-              <div className="breakdown-row">
-                <span>Proyecto:</span>
-                <span className="capitalize">{projectType}</span>
+            <div className="mt-10 space-y-4">
+              <div className="flex justify-between text-xs uppercase tracking-widest">
+                <span className="text-foreground/50">Proyecto:</span>
+                <span>{projectType}</span>
               </div>
-              <div className="breakdown-row">
-                <span>Área:</span>
+              <div className="flex justify-between text-xs uppercase tracking-widest">
+                <span className="text-foreground/50">Área:</span>
                 <span>{area} m²</span>
               </div>
-              <div className="breakdown-row">
-                <span>Acabados:</span>
-                <span>
-                  {finishQuality === "standard"
-                    ? "Estándar"
-                    : finishQuality === "premium"
-                    ? "Premium"
-                    : "Vanguardista"}
-                </span>
+              <div className="flex justify-between text-xs uppercase tracking-widest">
+                <span className="text-foreground/50">Acabados:</span>
+                <span>{finishQuality}</span>
               </div>
-              <div className="breakdown-row divider"></div>
-              <div className="breakdown-row">
-                <span>Costo Construcción Básica:</span>
+              <div className="h-px bg-white/10 my-4" />
+              <div className="flex justify-between text-xs uppercase tracking-widest">
+                <span className="text-foreground/50">Construcción:</span>
                 <span>{formatCOP(estimate.base)}</span>
               </div>
-              <div className="breakdown-row">
-                <span>Adicionales (Diseño/Tech):</span>
+              <div className="flex justify-between text-xs uppercase tracking-widest">
+                <span className="text-foreground/50">Adicionales:</span>
                 <span>{formatCOP(estimate.addons)}</span>
               </div>
             </div>
@@ -317,20 +276,13 @@ function Simulator() {
               href="https://wa.me/573157060211"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-quote"
+              className="mt-10 block w-full bg-white py-4 text-center text-xs font-bold uppercase tracking-[0.2em] text-black transition-all hover:bg-primary hover:text-white"
             >
-              Solicitar Cotización por WhatsApp
+              Cotizar Proyecto
             </a>
           </div>
         </aside>
       </main>
-
-      <footer className="global-footer neutral-footer">
-        <p>
-          &copy; {new Date().getFullYear()} LIIT / AMBOSS. Cálculos basados en tarifas estimadas del
-          mercado de construcción colombiano.
-        </p>
-      </footer>
     </div>
   );
 }
