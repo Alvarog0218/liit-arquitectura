@@ -1,15 +1,15 @@
-import ackaGamer from "@/assets/LIIT/ACKA GAMER_/0.jpg";
-import aptoCorpar from "@/assets/LIIT/APTO CORPAR_/SALA COMEDOR.jpg";
-import araraAcai from "@/assets/LIIT/ARARA ACAI/1.jpeg";
-import banoPrincipal from "@/assets/LIIT/BAÑO PRINCIPAL TJ_/Escena 1.png";
-import casaGuadalquivir from "@/assets/LIIT/CASA GUADALQUIVIR_/FACHADA PRINCIPAL.png";
-import casaGuanata from "@/assets/LIIT/CASA GUANATÁ_/1.png";
-import fabricaTouloust from "@/assets/LIIT/FABRICA LA TOULOUST_/Escena 1.png";
-import fincaTj from "@/assets/LIIT/FINCA TJ/27.png";
-import inverbet from "@/assets/LIIT/INVERBET_/1.jpg";
-import rebrosBurger from "@/assets/LIIT/REBRO_S BURGUER_/1.1.png";
-import wmsasTecnica from "@/assets/LIIT/WMSAS - AREA TECNICA/1.jpg";
-import wmsasOficinas from "@/assets/LIIT/WMSAS - OFICINAS_/1.jpg";
+import ackaGamer from "@/proyectos/ACKA GAME.webp";
+import aptoCorpar from "@/proyectos/APTO CORPAR.webp";
+import araraAcai from "@/proyectos/ARAR ACAI.webp";
+import banoPrincipal from "@/proyectos/BAÑO PRINCIPAL TJ.webp";
+import casaGuadalquivir from "@/proyectos/CASA GUADALAQUIVIR.webp";
+import casaGuanata from "@/proyectos/CASA GUANATA.webp";
+import fabricaTouloust from "@/proyectos/FABRICA LA TOULOUST.webp";
+import fincaTj from "@/proyectos/FINCA TJ.webp";
+import inverbet from "@/proyectos/INVERBET.webp";
+import rebrosBurger from "@/proyectos/REBRO`S BURGER.webp";
+import wmsasTecnica from "@/proyectos/WMSAS AREA TECNICA.webp";
+import wmsasOficinas from "@/proyectos/WMSAS OFICINAS.webp";
 
 export const PROJECT_CATEGORIES = [
   "Todos",

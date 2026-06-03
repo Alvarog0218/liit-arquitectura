@@ -34,3 +34,9 @@
 
 ### Cambiado
 - Se eliminaron los archivos estáticos temporales (`simulator.html`, `simulator.js`) tras su integración exitosa en el flujo de React/TanStack.
+
+## [2026-06-03] - Actualización de Imágenes de Portafolio
+
+### Cambiado
+- **Portadas de Proyectos**: Se actualizaron las imágenes principales de todos los proyectos en `src/data/projects.ts`. Ahora utilizan las versiones optimizadas `.webp` localizadas en la carpeta `src/proyectos/`.
+- **Consistencia Visual**: Se corrigieron discrepancias en los nombres de archivos para asegurar que cada proyecto muestre su miniatura correcta.
