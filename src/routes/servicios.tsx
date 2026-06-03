@@ -73,7 +73,7 @@ const SERVICES = [
 
 function Servicios() {
   return (
-    <div className="mx-auto max-w-7xl px-6 pt-8 pb-24">
+    <div className="mx-auto max-w-7xl px-6 pt-32 pb-24">
       <header className="mb-12 max-w-3xl">
         <span className="text-xs uppercase tracking-[0.3em] text-primary">Lo que hacemos</span>
         <h1 className="mt-4 text-5xl md:text-7xl">Servicios</h1>

@@ -30,7 +30,7 @@ function Proyectos() {
   const planTotal = projects.reduce((sum, project) => sum + project.plans, 0);
 
   return (
-    <div className="mx-auto max-w-7xl px-6 pt-8 pb-24">
+    <div className="mx-auto max-w-7xl px-6 pt-32 pb-24">
       <header className="mb-12 grid gap-10 md:grid-cols-12">
         <div className="md:col-span-8">
           <span className="text-xs uppercase tracking-[0.3em] text-primary">Portafolio LIIT</span>

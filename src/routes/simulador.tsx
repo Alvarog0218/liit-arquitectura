@@ -88,7 +88,7 @@ function Simulator() {
   };
 
   return (
-    <div className="mx-auto max-w-7xl px-6 pt-16 pb-24 simulator-page-integrated">
+    <div className="mx-auto max-w-7xl px-6 pt-32 pb-24 simulator-page-integrated">
       <header className="mb-12 max-w-3xl">
         <span className="text-xs uppercase tracking-[0.3em] text-primary">Herramienta Interactiva</span>
         <h1 className="mt-4 text-5xl md:text-7xl">Simulador</h1>

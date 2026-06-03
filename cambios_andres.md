@@ -56,3 +56,10 @@
 - **Enfoque Visual**: Se ajustó el `object-position` para centrar los elementos clave de la arquitectura tanto en versiones móviles (vertical) como de escritorio.
 - **Efecto Parallax**: Se optimizó la animación de desplazamiento para evitar espacios en blanco, expandiendo el contenedor de la imagen al 120% del viewport.
 - **Legibilidad**: Se añadieron capas de contraste sutiles (`overlay`) sobre las imágenes del Hero para asegurar que el texto sea siempre legible independientemente de la luminosidad de la foto.
+
+## [2026-06-03] - Hero Full-Screen y Refinamiento de Layout
+
+### Cambiado
+- **Experiencia Full-Screen**: Se rediseñó el Hero de la página de inicio para que sea verdaderamente a pantalla completa (`min-h-screen`), eliminando cualquier espacio en los bordes superiores e inferiores. Ahora la imagen fluye por detrás del Navbar (que es traslúcido).
+- **Ajuste de Layout Global**: Se eliminó el padding global forzado en el contenedor `main` para permitir secciones inmersivas. En su lugar, se aplicó un espaciado superior (`pt-32`) específico a todas las subpáginas (Proyectos, Servicios, Contacto, etc.) para que sus encabezados no queden ocultos tras la barra de navegación fija.
+- **Consistencia en Navegación**: Se verificó que todas las rutas mantengan un equilibrio visual óptimo entre el menú fijo y el inicio del contenido.

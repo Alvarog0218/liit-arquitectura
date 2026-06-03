@@ -55,7 +55,7 @@ function Hero() {
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
   return (
-    <section ref={ref} className="relative isolate min-h-[85vh] w-full overflow-hidden">
+    <section ref={ref} className="relative isolate min-h-screen w-full overflow-hidden">
       {/* Mobile Image */}
       <motion.div 
         style={{ y: yBg }} 
@@ -82,7 +82,7 @@ function Hero() {
         <div className="absolute inset-0 bg-black/10" />
       </motion.div>
 
-      <div className="mx-auto flex min-h-[85vh] max-w-7xl items-center px-6 py-24">
+      <div className="mx-auto flex min-h-screen max-w-7xl items-center px-6 py-24">
         <motion.div style={{ opacity }} className="relative z-10 max-w-2xl">
           <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-primary">
             <span className="h-px w-8 bg-primary" /> Arquitectura que transforma
