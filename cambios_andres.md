@@ -42,3 +42,9 @@
 - **Consistencia Visual**: Se rediseñó la interfaz del simulador en `src/routes/simulador.tsx` para usar las mismas variables de color, tipografía (Anta) y estilos de secciones que el resto de la aplicación.
 - **Refinamiento de UI**: Se optimizaron los controles (inputs, radio buttons, sliders) para que armonicen con el tema vinotinto/claro, incluyendo animaciones de transición entre pasos.
 - **Limpieza de CSS**: Se simplificó `src/simulator.css` eliminando redundancias y enfocándolo exclusivamente en los componentes interactivos del simulador.
+
+## [2026-06-03] - Ajuste de Espaciado: Header y Hero
+
+### Cambiado
+- **Layout Global**: Se añadió un padding superior (`pt-20`) al contenedor `main` en `src/routes/__root.tsx`. Esto asegura que el Hero de la página de inicio y el contenido de todas las subpáginas comiencen debajo de la barra de navegación fija, evitando solapamientos no deseados.
+- **Optimización de Subpáginas**: Se redujo el padding superior interno en `proyectos.tsx`, `servicios.tsx`, `contacto.tsx`, `nosotros.tsx` y `proceso.tsx` para mantener un equilibrio visual consistente con el nuevo ajuste global.

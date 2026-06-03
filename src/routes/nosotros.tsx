@@ -22,7 +22,7 @@ export const Route = createFileRoute("/nosotros")({
 
 function Nosotros() {
   return (
-    <div className="mx-auto max-w-7xl px-6 pt-16 pb-24">
+    <div className="mx-auto max-w-7xl px-6 pt-8 pb-24">
       <header className="mb-16 grid gap-10 md:grid-cols-12">
         <div className="md:col-span-7">
           <span className="text-xs uppercase tracking-[0.3em] text-primary">Sobre LIIT</span>

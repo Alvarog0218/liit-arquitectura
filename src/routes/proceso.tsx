@@ -49,7 +49,7 @@ const STEPS = [
 
 function Proceso() {
   return (
-    <div className="mx-auto max-w-7xl px-6 pt-16 pb-24">
+    <div className="mx-auto max-w-7xl px-6 pt-8 pb-24">
       <header className="mb-16 max-w-3xl">
         <span className="text-xs uppercase tracking-[0.3em] text-primary">Metodología</span>
         <h1 className="mt-4 text-5xl md:text-7xl">Proceso</h1>
