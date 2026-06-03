@@ -23,3 +23,14 @@
 - **Componente Logo**: Se actualizó `src/components/lit/Logo.tsx` para que use la versión invertida (clara) por defecto.
 - **Secciones de Home**: Se ajustaron las secciones `ServicesPreview` y `Amboss` en `src/routes/index.tsx` para armonizar con el nuevo fondo oscuro y mantener el contraste.
 - **Variables UI**: Se actualizaron las variables de `card`, `muted`, `border` e `input` para mejorar la legibilidad sobre el fondo oscuro.
+
+## [2026-06-03] - Nueva Página: Simulador de Proyectos
+
+### Agregado
+- **Ruta `/simulador`**: Se creó una nueva página interactiva para la estimación de costos de proyectos.
+- **Componente Simulador**: Integración de lógica de cálculo (COP) y diseño multi-paso en `src/routes/simulador.tsx`.
+- **Estilos del Simulador**: Se integraron y optimizaron los estilos en `src/simulator.css`.
+- **Navegación**: Se añadieron enlaces al Simulador en el `Header` y `Footer`.
+
+### Cambiado
+- Se eliminaron los archivos estáticos temporales (`simulator.html`, `simulator.js`) tras su integración exitosa en el flujo de React/TanStack.

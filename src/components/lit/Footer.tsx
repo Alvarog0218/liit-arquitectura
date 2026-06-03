@@ -39,6 +39,11 @@ export function Footer() {
                 </Link>
               </li>
               <li>
+                <Link to="/simulador" className="hover:text-primary">
+                  Simulador
+                </Link>
+              </li>
+              <li>
                 <Link to="/servicios" className="hover:text-primary">
                   Servicios
                 </Link>
