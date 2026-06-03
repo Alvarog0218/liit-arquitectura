@@ -15,3 +15,11 @@
 - **Dev**: Servidor de desarrollo funcional en `http://localhost:8080/`.
 - **Preview**: Vista previa de producción funcional en `http://localhost:3000/`.
 - **Tipado**: Verificación de TypeScript (`tsc`) sin errores.
+
+## [2026-06-03] - Actualización de Tema: Fondo Global Vinotinto
+
+### Cambiado
+- **Tema Global**: Se invirtió el esquema de colores en `src/styles.css`. Ahora el fondo principal es vinotinto (`--wine`) y el texto es claro (`--paper`).
+- **Componente Logo**: Se actualizó `src/components/lit/Logo.tsx` para que use la versión invertida (clara) por defecto.
+- **Secciones de Home**: Se ajustaron las secciones `ServicesPreview` y `Amboss` en `src/routes/index.tsx` para armonizar con el nuevo fondo oscuro y mantener el contraste.
+- **Variables UI**: Se actualizaron las variables de `card`, `muted`, `border` e `input` para mejorar la legibilidad sobre el fondo oscuro.

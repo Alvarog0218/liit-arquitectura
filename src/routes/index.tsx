@@ -194,7 +194,7 @@ const services = [
 
 function ServicesPreview() {
   return (
-    <section className="bg-ink py-28 text-paper">
+    <section className="bg-card/30 py-28 text-paper">
       <div className="mx-auto max-w-7xl px-6">
         <div className="mb-16 max-w-2xl">
           <span className="text-xs uppercase tracking-[0.3em] text-primary">Servicios</span>
@@ -202,8 +202,8 @@ function ServicesPreview() {
         </div>
         <div className="grid gap-px bg-paper/10 md:grid-cols-3">
           {services.map((s, i) => (
-            <Reveal key={s.title} variant="module" delay={i * 0.12} className="bg-ink">
-              <div className="group flex h-full flex-col justify-between p-10 transition-colors hover:bg-wine">
+            <Reveal key={s.title} variant="module" delay={i * 0.12} className="bg-background">
+              <div className="group flex h-full flex-col justify-between p-10 transition-colors hover:bg-card">
                 <s.icon className="h-8 w-8 text-primary" strokeWidth={1.2} />
                 <div className="mt-16">
                   <h3 className="text-2xl">{s.title}</h3>
@@ -241,7 +241,7 @@ function Amboss() {
               arquitectónico, construcción y ejecución integral cuando el proyecto lo requiere.
             </p>
           </div>
-          <div className="flex min-h-64 items-center justify-center border border-border bg-ink p-8 md:p-12">
+          <div className="flex min-h-64 items-center justify-center border border-border bg-wine p-8 md:p-12">
             <img
               src={ambossLogo}
               alt="Logo de AMBOSS"

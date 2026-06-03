@@ -3,7 +3,7 @@ import logo from "@/assets/Logo-liit-negro.png";
 
 export function Logo({
   className = "",
-  invert = false,
+  invert = true, // Default to true since we have a global dark background
 }: {
   className?: string;
   invert?: boolean;
