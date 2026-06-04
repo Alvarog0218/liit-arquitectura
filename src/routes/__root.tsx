@@ -9,7 +9,7 @@ import {
 } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
-import favicon from "@/assets/logo-negro-liit.picon?url";
+import favicon from "@/assets/Logo-liit-negro.png?url";
 import { Header } from "@/components/lit/Header";
 import { Footer } from "@/components/lit/Footer";
 
