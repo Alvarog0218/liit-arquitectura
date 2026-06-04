@@ -7,8 +7,8 @@ import { Gallery } from "@/components/lit/Gallery";
 import { featuredProjects, type Project } from "@/data/projects";
 import { projectGalleryImages } from "@/data/projectImages";
 import ambossLogo from "@/assets/A.png";
-import heroLiit from "@/assets/hero-liit.png";
-import heroLiitVertical from "@/assets/hero-liit-vertical.png";
+import heroLiit from "@/assets/hero-liit.webp";
+import heroLiitVertical from "@/assets/hero-liit-vertical.webp";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -64,6 +64,8 @@ function Hero() {
           src={heroLiitVertical}
           alt="Interior arquitectónico contemporáneo de LIIT"
           className="h-full w-full object-cover object-center"
+          fetchPriority="high"
+          decoding="async"
         />
         <div className="absolute inset-0 bg-black/20" />
       </motion.div>
@@ -77,6 +79,8 @@ function Hero() {
           src={heroLiit}
           alt="Interior arquitectónico contemporáneo de LIIT"
           className="h-full w-full object-cover object-[center_30%]"
+          fetchPriority="high"
+          decoding="async"
         />
         <div className="absolute inset-0 bg-black/10" />
       </motion.div>

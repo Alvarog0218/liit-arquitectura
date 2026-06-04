@@ -1,12 +1,23 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { X, ChevronLeft, ChevronRight, Maximize2 } from "lucide-react";
+import { X, ChevronLeft, ChevronRight } from "lucide-react";
 
 interface GalleryProps {
   images: string[];
   title: string;
   isOpen: boolean;
   onClose: () => void;
+}
+
+/** Derives the thumbnail URL from a full image URL (adds -thumb suffix before extension). */
+function thumbUrl(src: string): string {
+  return src.replace(/(\.[a-z]+)$/i, "-thumb$1");
+}
+
+/** Preloads an image URL into browser cache. */
+function preload(src: string) {
+  const img = new Image();
+  img.src = src;
 }
 
 export function Gallery({ images, title, isOpen, onClose }: GalleryProps) {
@@ -24,15 +35,24 @@ export function Gallery({ images, title, isOpen, onClose }: GalleryProps) {
     };
   }, [isOpen]);
 
-  const handleNext = (e?: React.MouseEvent) => {
+  // Preload adjacent images when index changes
+  useEffect(() => {
+    if (!isOpen || images.length === 0) return;
+    const next = (currentIndex + 1) % images.length;
+    const prev = (currentIndex - 1 + images.length) % images.length;
+    preload(images[next]);
+    preload(images[prev]);
+  }, [currentIndex, isOpen, images]);
+
+  const handleNext = useCallback((e?: React.MouseEvent) => {
     e?.stopPropagation();
     setCurrentIndex((prev) => (prev + 1) % images.length);
-  };
+  }, [images.length]);
 
-  const handlePrev = (e?: React.MouseEvent) => {
+  const handlePrev = useCallback((e?: React.MouseEvent) => {
     e?.stopPropagation();
     setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
-  };
+  }, [images.length]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -43,7 +63,7 @@ export function Gallery({ images, title, isOpen, onClose }: GalleryProps) {
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [isOpen, images.length]);
+  }, [isOpen, handleNext, handlePrev, onClose]);
 
   if (!isOpen) return null;
 
@@ -91,6 +111,8 @@ export function Gallery({ images, title, isOpen, onClose }: GalleryProps) {
               exit={{ opacity: 0, scale: 1.05 }}
               transition={{ duration: 0.3 }}
               className="max-h-full max-w-full object-contain shadow-2xl"
+              loading="eager"
+              decoding="async"
               onClick={(e) => e.stopPropagation()}
             />
           </AnimatePresence>
@@ -116,7 +138,13 @@ export function Gallery({ images, title, isOpen, onClose }: GalleryProps) {
                 currentIndex === idx ? "ring-2 ring-primary scale-110 z-10" : "opacity-40 hover:opacity-100"
               }`}
             >
-              <img src={img} className="h-full w-full object-cover" />
+              <img
+                src={thumbUrl(img)}
+                onError={(e) => { (e.target as HTMLImageElement).src = img; }}
+                loading="lazy"
+                decoding="async"
+                className="h-full w-full object-cover"
+              />
             </button>
           ))}
         </div>
