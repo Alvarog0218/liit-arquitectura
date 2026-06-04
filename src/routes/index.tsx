@@ -36,7 +36,6 @@ function Home() {
       <FeaturedProjects onProjectSelect={setSelectedProject} />
       <ServicesPreview />
       <Amboss />
-      <CtaBand />
 
       <Gallery
         isOpen={!!selectedProject}
@@ -212,11 +211,11 @@ function ServicesPreview() {
         <div className="grid gap-px bg-paper/10 md:grid-cols-3">
           {services.map((s, i) => (
             <Reveal key={s.title} variant="module" delay={i * 0.12} className="bg-background">
-              <div className="group flex h-full flex-col justify-between p-10 transition-colors hover:bg-card">
-                <s.icon className="h-8 w-8 text-primary" strokeWidth={1.2} />
+              <div className="group flex h-full flex-col justify-between p-10 transition-colors hover:bg-beige hover:text-primary-foreground">
+                <s.icon className="h-8 w-8 text-primary transition-colors group-hover:text-primary-foreground" strokeWidth={1.2} />
                 <div className="mt-16">
                   <h3 className="text-2xl">{s.title}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-paper/70">{s.desc}</p>
+                  <p className="mt-3 text-sm leading-relaxed text-paper/70 group-hover:text-primary-foreground/85">{s.desc}</p>
                 </div>
               </div>
             </Reveal>
@@ -237,48 +236,54 @@ function ServicesPreview() {
 
 function Amboss() {
   return (
-    <section className="mx-auto max-w-7xl px-6 py-24">
+    <section className="mx-auto max-w-7xl px-6 pt-24 pb-0">
       <Reveal>
-        <div className="grid items-center gap-10 border border-border bg-card p-10 md:grid-cols-2 md:p-16">
-          <div>
-            <span className="text-xs uppercase tracking-[0.3em] text-accent">Alianza</span>
-            <h2 className="mt-3 text-3xl md:text-4xl">
-              En sinergia con <span className="text-primary">AMBOSS</span>
-            </h2>
-            <p className="mt-5 max-w-md text-sm leading-relaxed text-foreground/70">
-              LIIT Arquitectura trabaja de la mano con AMBOSS para complementar diseño
-              arquitectónico, construcción y ejecución integral cuando el proyecto lo requiere.
-            </p>
-          </div>
-          <div className="flex min-h-64 items-center justify-center border border-border bg-wine p-8 md:p-12">
+        <a
+          href="https://amboss-arquitectura.vercel.app/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="relative group block overflow-hidden border border-white/10 bg-[#1a1c1b] cursor-pointer"
+        >
+          {/* Imagen de fondo expansiva */}
+          <div className="absolute inset-0">
             <img
-              src={ambossLogo}
-              alt="Logo de AMBOSS"
-              width={256}
-              height={256}
-              className="h-auto w-full max-w-56 object-contain"
+              src="https://amboss-arquitectura.vercel.app/assets/hero-BZwNo18j.jpg"
+              alt="Hero de AMBOSS Arquitectos"
+              className="h-full w-full object-cover opacity-40 transition-transform duration-[1.5s] group-hover:scale-105"
             />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#1a1c1b] via-[#1a1c1b]/60 to-transparent" />
           </div>
-        </div>
+
+          <div className="relative z-10 grid gap-10 p-10 md:grid-cols-2 md:p-20">
+            <div className="flex flex-col justify-center">
+              <div className="flex items-center gap-2">
+                <span className="text-xs uppercase tracking-[0.3em] text-white/50">Alianza</span>
+                <ArrowRight className="h-3 w-3 text-white/30 transition-transform group-hover:translate-x-1 group-hover:text-primary" />
+              </div>
+              <h2 className="mt-3 text-3xl text-white md:text-5xl">
+                LIIT × <span className="text-[#49b07a]">AMBOSS</span>
+              </h2>
+              <p className="mt-6 text-xl font-medium leading-tight text-white md:text-2xl">
+                Diseño y obra integral.
+              </p>
+              <p className="mt-4 max-w-md text-sm leading-relaxed text-white/70">
+                Somos una compañía de arquitectos enfocada en diseño, construcción y arquitectura
+                para proyectos comerciales, residenciales e inmobiliarios.
+              </p>
+            </div>
+
+            <div className="flex items-center justify-center md:justify-end">
+              <img
+                src={ambossLogo}
+                alt="Logo AMBOSS"
+                className="h-20 w-auto object-contain brightness-0 invert opacity-80 transition-opacity group-hover:opacity-100 md:h-28"
+              />
+            </div>
+          </div>
+        </a>
       </Reveal>
     </section>
   );
 }
 
-function CtaBand() {
-  return (
-    <section className="bg-primary text-primary-foreground">
-      <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-8 px-6 py-20 md:flex-row md:items-center">
-        <h2 className="max-w-2xl text-4xl md:text-5xl">
-          Tu espacio tiene más potencial del que imaginas.
-        </h2>
-        <Link
-          to="/contacto"
-          className="inline-flex items-center gap-3 border border-paper/40 px-8 py-4 text-sm uppercase tracking-[0.25em] transition-colors hover:bg-paper hover:text-primary"
-        >
-          Empecemos <ArrowRight className="h-4 w-4" />
-        </Link>
-      </div>
-    </section>
-  );
-}
+

@@ -6,7 +6,6 @@ export function Footer() {
   return (
     <footer className="mt-32 border-t border-border bg-wine text-paper">
       <div className="mx-auto max-w-7xl px-6 py-16">
-        <BlueprintLine className="mb-12 h-4 w-full text-paper/40" />
         <div className="grid gap-12 md:grid-cols-4">
           <div className="md:col-span-2">
             <div className="flex items-center gap-3">
@@ -15,7 +14,7 @@ export function Footer() {
                 alt="LIIT"
                 width={250}
                 height={250}
-                className="h-12 w-12 object-contain invert"
+                className="h-[50.4px] w-[50.4px] object-contain invert"
               />
               <span className="text-[10px] uppercase tracking-[0.3em] text-paper/70">
                 Arquitectura
@@ -25,22 +24,18 @@ export function Footer() {
               Transformamos ideas en espacios que se viven, se sienten y se recuerdan. Diseño con
               intención, funcionalidad y carácter.
             </p>
-            <div className="mt-6 inline-flex items-center gap-3 rounded-sm border border-paper/20 px-4 py-2 text-xs uppercase tracking-[0.2em] text-paper/80">
-              <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-              Empresa hermana de <span className="text-paper">AMBOSS</span>
-            </div>
           </div>
           <div>
             <h4 className="text-xs uppercase tracking-[0.2em] text-paper/60">Navega</h4>
             <ul className="mt-4 space-y-2 text-sm">
               <li>
-                <Link to="/proyectos" className="hover:text-primary">
-                  Proyectos
+                <Link to="/quienes-somos" className="hover:text-primary">
+                  Quiénes Somos
                 </Link>
               </li>
               <li>
-                <Link to="/simulador" className="hover:text-primary">
-                  Simulador
+                <Link to="/proyectos" className="hover:text-primary">
+                  Proyectos
                 </Link>
               </li>
               <li>
@@ -49,13 +44,8 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link to="/proceso" className="hover:text-primary">
-                  Proceso
-                </Link>
-              </li>
-              <li>
-                <Link to="/nosotros" className="hover:text-primary">
-                  Nosotros
+                <Link to="/simulador" className="hover:text-primary">
+                  Simulador
                 </Link>
               </li>
               <li>
@@ -69,8 +59,7 @@ export function Footer() {
             <h4 className="text-xs uppercase tracking-[0.2em] text-paper/60">Contacto</h4>
             <ul className="mt-4 space-y-2 text-sm text-paper/80">
               <li>hola@liitarquitectura.com</li>
-              <li>+00 000 000 000</li>
-              <li>Instagram · Behance · LinkedIn</li>
+              <li>Instagram · Behance</li>
             </ul>
           </div>
         </div>

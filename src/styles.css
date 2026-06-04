@@ -142,6 +142,7 @@
   --color-olive: var(--olive);
   --color-wine: var(--wine);
   --color-paper: var(--paper);
+  --color-beige: var(--beige);
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
   --color-border: var(--border);
@@ -167,6 +168,7 @@
   --radius: 0.125rem;
   /* Paper — white/cream */
   --paper: oklch(1 0 0);
+  --beige: #bfaf91;
   /* Wine — #362828 as base background */
   --wine: oklch(0.22 0.025 20);
   
@@ -256,7 +258,7 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
-    font-weight: 200;
+    font-weight: 350;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -268,6 +270,7 @@
   h5,
   h6 {
     font-family: var(--font-display);
+    font-weight: 400;
     letter-spacing: -0.01em;
   }
 }

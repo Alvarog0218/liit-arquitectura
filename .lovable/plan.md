@@ -11,8 +11,7 @@ src/routes/
   index.tsx          / — Home
   proyectos.tsx      /proyectos — Grid de proyectos
   servicios.tsx      /servicios — Servicios
-  proceso.tsx        /proceso — Metodología
-  nosotros.tsx       /nosotros — Sobre LIT + AMBOSS
+  quienes-somos.tsx  /quienes-somos — Sobre LIT + Proceso + AMBOSS
   contacto.tsx       /contacto — Formulario + datos
 ```
 
@@ -26,7 +25,7 @@ Cada ruta con su propio `head()` (title, description, og).
 
 ## Animaciones arquitectónicas (las 4 elegidas)
 
-1. **Blueprint draw on scroll** — líneas SVG (planos, plantas, ejes) que se trazan con `stroke-dasharray`/`stroke-dashoffset` activadas por IntersectionObserver. Usadas en hero, divisores de sección y fondo de "Proceso".
+1. **Blueprint draw on scroll** — líneas SVG (planos, plantas, ejes) que se trazan con `stroke-dasharray`/`stroke-dashoffset` activadas por IntersectionObserver. Usadas en hero, divisores de sección y fondo de "Proceso" dentro de "Quiénes Somos".
 2. **Ensamblaje modular** — bloques que se apilan/encajan en secuencia (transform + stagger). Usado en "Servicios" (cada servicio = un bloque que cae en su sitio) y en la grilla de "Proyectos" al cargar.
 3. **Parallax de capas** — hero con 3 planos superpuestos (planta → alzado → render fotográfico) que se desplazan a distinta velocidad con scroll. También en cards de proyecto al hacer hover (capas se separan).
 4. **Transición cortina/persiana** — apertura de proyectos y transiciones entre secciones con paneles verticales que se abren como persianas/cortinas arquitectónicas usando `clip-path`.
@@ -52,15 +51,9 @@ Implementación con CSS + Motion for React (`motion/react`) y SVG inline. Respet
 - Bloques modulares que se ensamblan: Diseño arquitectónico, Interiorismo, Remodelación, Consultoría, Renderización, Dirección de obra.
 - Cada bloque con icono SVG tipo blueprint.
 
-### Proceso (`/proceso`)
-- Timeline vertical con líneas SVG que se dibujan al scrollear.
-- 5 pasos: Briefing → Concepto → Anteproyecto → Proyecto ejecutivo → Construcción/Entrega.
-- Cada paso con animación de plano trazándose.
-
-### Nosotros (`/nosotros`)
+### Quiénes Somos (`/quienes-somos`)
 - Historia y filosofía (texto del manual).
-- Equipo (placeholders).
-- **Bloque "Empresa hermana — AMBOSS"**: card destacada explicando la alianza, con logo placeholder y enlace placeholder.
+- **Proceso / Metodología**: Timeline vertical con líneas SVG que se dibujan al scrollear. 5 pasos: Briefing → Concepto → Anteproyecto → Proyecto ejecutivo → Construcción/Entrega.
 
 ### Contacto (`/contacto`)
 - Formulario (nombre, email, tipo de proyecto, mensaje) — solo UI, sin backend en esta iteración.

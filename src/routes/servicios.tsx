@@ -89,7 +89,7 @@ function Servicios() {
         <div className="grid gap-px bg-border md:grid-cols-2 lg:grid-cols-4">
           {SERVICES.map((s, i) => (
             <Reveal key={s.title} variant="module" delay={(i % 4) * 0.1} className="bg-background">
-              <div className="group flex h-full flex-col justify-between p-10 transition-colors hover:bg-primary hover:text-primary-foreground">
+              <div className="group flex h-full flex-col justify-between p-10 transition-colors hover:bg-beige hover:text-primary-foreground">
                 <div className="flex items-center justify-between">
                   <s.icon
                     className="h-8 w-8 text-primary transition-colors group-hover:text-primary-foreground"
