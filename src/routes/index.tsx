@@ -249,7 +249,7 @@ function Amboss() {
             <img
               src="https://amboss-arquitectura.vercel.app/assets/hero-BZwNo18j.jpg"
               alt="Hero de AMBOSS Arquitectos"
-              className="h-full w-full object-cover opacity-40 transition-transform duration-[1.5s] group-hover:scale-105"
+              className="h-full w-full object-cover object-[center_30%] opacity-40 transition-transform duration-[1.5s] group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-[#1a1c1b] via-[#1a1c1b]/60 to-transparent" />
           </div>
