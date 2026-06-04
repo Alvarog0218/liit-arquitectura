@@ -92,7 +92,7 @@ function Hero() {
           </span>
           <h1 className="mt-6 text-5xl leading-[1.05] tracking-tight md:text-7xl">
             Espacios con <em className="not-italic text-primary">intención</em>. Diseño con
-            carácter.
+            carácter
           </h1>
           <p className="mt-6 max-w-xl text-base leading-relaxed text-foreground/70 md:text-lg">
             En LIIT transformamos ideas en espacios que se viven, se sienten y se recuerdan.
@@ -107,12 +107,14 @@ function Hero() {
               Ver proyectos
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
-            <Link
-              to="/contacto"
+            <a
+              href="https://wa.me/573015930601"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-sm uppercase tracking-[0.2em] text-foreground/80 underline-offset-8 hover:text-primary hover:underline"
             >
               Hablemos
-            </Link>
+            </a>
           </div>
         </motion.div>
       </div>
@@ -210,7 +212,7 @@ function ServicesPreview() {
       <div className="mx-auto max-w-7xl px-6">
         <div className="mb-16 max-w-2xl">
           <span className="text-xs uppercase tracking-[0.3em] text-primary">Servicios</span>
-          <h2 className="mt-3 text-4xl md:text-5xl">Lo que hacemos por tu espacio.</h2>
+          <h2 className="mt-3 text-4xl md:text-5xl">Lo que hacemos por tu espacio</h2>
         </div>
         <div className="grid gap-px bg-paper/10 md:grid-cols-3">
           {services.map((s, i) => (
@@ -268,7 +270,7 @@ function Amboss() {
                 LIIT × <span className="text-[#49b07a]">AMBOSS</span>
               </h2>
               <p className="mt-6 text-xl font-medium leading-tight text-white md:text-2xl">
-                Diseño y obra integral.
+                Diseño y obra integral
               </p>
               <p className="mt-4 max-w-md text-sm leading-relaxed text-white/70">
                 Somos una compañía de arquitectos enfocada en diseño, construcción y arquitectura

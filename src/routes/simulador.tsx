@@ -159,7 +159,7 @@ function Simulator() {
                     />
                     <div className="mt-6 text-center">
                       <span className="text-6xl font-display text-primary">{area}</span>
-                      <span className="ml-2 text-xl uppercase tracking-widest text-foreground/40">m²</span>
+                      <span className="ml-2 text-xl font-display uppercase tracking-widest text-foreground/40">m²</span>
                     </div>
                   </div>
                 </div>
@@ -251,24 +251,24 @@ function Simulator() {
             <div className="mt-10 space-y-4">
               <div className="flex justify-between text-xs uppercase tracking-widest">
                 <span className="text-foreground/50">Proyecto:</span>
-                <span>{projectType}</span>
+                <span className="font-display capitalize">{projectType}</span>
               </div>
               <div className="flex justify-between text-xs uppercase tracking-widest">
                 <span className="text-foreground/50">Área:</span>
-                <span>{area} m²</span>
+                <span className="font-display">{area} m²</span>
               </div>
               <div className="flex justify-between text-xs uppercase tracking-widest">
                 <span className="text-foreground/50">Acabados:</span>
-                <span>{finishQuality}</span>
+                <span className="font-display capitalize">{finishQuality}</span>
               </div>
               <div className="h-px bg-white/10 my-4" />
               <div className="flex justify-between text-xs uppercase tracking-widest">
                 <span className="text-foreground/50">Construcción:</span>
-                <span>{formatCOP(estimate.base)}</span>
+                <span className="font-display">{formatCOP(estimate.base)}</span>
               </div>
               <div className="flex justify-between text-xs uppercase tracking-widest">
                 <span className="text-foreground/50">Adicionales:</span>
-                <span>{formatCOP(estimate.addons)}</span>
+                <span className="font-display">{formatCOP(estimate.addons)}</span>
               </div>
             </div>
 

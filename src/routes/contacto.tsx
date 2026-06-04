@@ -21,13 +21,44 @@ export const Route = createFileRoute("/contacto")({
 
 function Contacto() {
   const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setLoading(true);
+
+    const formData = new FormData(e.currentTarget);
+    formData.append("_subject", "Mensaje de Pagina Web");
+
+    try {
+      const response = await fetch("https://formspree.io/f/hola@liitarquitectura.com", {
+        method: "POST",
+        body: formData,
+        headers: {
+          Accept: "application/json",
+        },
+      });
+
+      if (response.ok) {
+        setSent(true);
+      } else {
+        // Fallback or error handling
+        alert("Hubo un error al enviar el mensaje. Por favor intenta de nuevo.");
+      }
+    } catch (error) {
+      alert("Hubo un error de conexión. Por favor intenta de nuevo.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="mx-auto max-w-7xl px-6 pt-32 pb-24">
       <header className="mb-16 grid gap-10 md:grid-cols-12">
         <div className="md:col-span-7">
           <span className="text-xs uppercase tracking-[0.3em] text-primary">Contacto</span>
           <h1 className="mt-4 text-5xl leading-[1.05] md:text-7xl">
-            Tu espacio tiene más potencial del que imaginas.
+            Tu espacio tiene más potencial del que imaginas
           </h1>
         </div>
         <div className="md:col-span-5 md:pt-8">
@@ -44,8 +75,12 @@ function Contacto() {
         <Reveal className="md:col-span-5">
           <div className="space-y-8">
             <ContactItem icon={<Mail />} label="Email" value="hola@liitarquitectura.com" />
-            <ContactItem icon={<Phone />} label="Teléfono" value="+00 000 000 000" />
-            <ContactItem icon={<MapPin />} label="Estudio" value="Av. Principal 123, Ciudad" />
+            <ContactItem
+              icon={<Phone />}
+              label="Teléfonos"
+              value="+57 301 593 0601 / +57 317 367 2202"
+            />
+            <ContactItem icon={<MapPin />} label="Estudio" value="Calle 13 # 19 - 36, Mutualidad, Bucaramanga" />
           </div>
           <div className="mt-12 border-l-2 border-primary pl-6 text-sm text-foreground/70">
             <p>
@@ -64,13 +99,7 @@ function Contacto() {
               </p>
             </div>
           ) : (
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                setSent(true);
-              }}
-              className="space-y-6"
-            >
+            <form onSubmit={handleSubmit} className="space-y-6">
               <Field label="Nombre" name="name" required />
               <Field label="Email" name="email" type="email" required />
               <SelectField
@@ -81,9 +110,10 @@ function Contacto() {
               <TextareaField label="Cuéntanos tu idea" name="message" required />
               <button
                 type="submit"
-                className="bg-primary px-8 py-4 text-sm uppercase tracking-[0.2em] text-primary-foreground transition-colors hover:bg-wine"
+                disabled={loading}
+                className="bg-primary px-8 py-4 text-sm uppercase tracking-[0.2em] text-primary-foreground transition-colors hover:bg-wine disabled:opacity-50"
               >
-                Enviar mensaje
+                {loading ? "Enviando..." : "Enviar mensaje"}
               </button>
             </form>
           )}
@@ -107,7 +137,7 @@ function ContactItem({
       <div className="mt-1 text-primary">{icon}</div>
       <div>
         <div className="text-[10px] uppercase tracking-[0.25em] text-foreground/50">{label}</div>
-        <div className="mt-1 text-lg">{value}</div>
+        <div className="mt-1 text-lg font-display">{value}</div>
       </div>
     </div>
   );

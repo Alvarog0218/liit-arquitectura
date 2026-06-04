@@ -60,7 +60,7 @@ function QuienesSomos() {
         <div className="md:col-span-7">
           <span className="text-xs uppercase tracking-[0.3em] text-primary">Sobre LIIT</span>
           <h1 className="mt-4 text-5xl leading-[1.05] md:text-7xl">
-            Transformamos ideas en espacios que se viven, se sienten y se recuerdan.
+            Transformamos ideas en espacios que se viven, se sienten y se recuerdan
           </h1>
         </div>
         <div className="md:col-span-5 md:pt-8">
