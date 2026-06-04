@@ -59,7 +59,16 @@ export function Footer() {
             <h4 className="text-xs uppercase tracking-[0.2em] text-paper/60">Contacto</h4>
             <ul className="mt-4 space-y-2 text-sm text-paper/80">
               <li>hola@liitarquitectura.com</li>
-              <li>Instagram · Behance</li>
+              <li>
+                <a
+                  href="https://www.instagram.com/liitarquitectura/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-primary transition-colors"
+                >
+                  Instagram
+                </a>
+              </li>
             </ul>
           </div>
         </div>
