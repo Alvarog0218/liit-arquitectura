@@ -66,7 +66,7 @@ export function Footer() {
                   rel="noopener noreferrer"
                   className="hover:text-primary transition-colors"
                 >
-                  Instagram
+                  @liitarquitectura
                 </a>
               </li>
             </ul>
