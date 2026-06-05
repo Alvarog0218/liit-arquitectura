@@ -1,8 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { BlueprintLine } from "./BlueprintLine";
 import logo from "@/assets/Logo-liit-negro.png";
-import instagramIcon from "@/assets/instagram.webp";
-import whatsappIcon from "@/assets/wpp.webp";
+import instagramIcon from "@/assets/instab.svg";
+import whatsappIcon from "@/assets/wp.svg";
 
 export function Footer() {
   return (
@@ -71,7 +71,7 @@ export function Footer() {
                   <img 
                     src={instagramIcon} 
                     alt="Instagram" 
-                    className="h-7 w-7 object-contain"
+                    className="h-7 w-7 object-contain invert"
                   />
                 </a>
                 <a
@@ -83,7 +83,7 @@ export function Footer() {
                   <img 
                     src={whatsappIcon} 
                     alt="WhatsApp" 
-                    className="h-7 w-7 object-contain"
+                    className="h-7 w-7 object-contain invert"
                   />
                 </a>
               </li>
