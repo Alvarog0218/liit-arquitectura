@@ -102,16 +102,17 @@ function Hero() {
           <div className="mt-10 flex flex-wrap items-center gap-4">
             <Link
               to="/proyectos"
-              className="group inline-flex items-center gap-3 bg-primary px-6 py-3 text-sm uppercase tracking-[0.2em] text-primary-foreground transition-all hover:bg-wine"
+              className="group inline-flex items-center gap-3 bg-primary px-6 py-3 text-sm uppercase tracking-[0.2em] text-primary-foreground transition-all hover:bg-wine hover:text-white"
             >
               Ver proyectos
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
             <Link
               to="/contacto"
-              className="text-sm uppercase tracking-[0.2em] text-foreground/80 underline-offset-8 hover:text-primary hover:underline"
+              className="group relative text-sm uppercase tracking-[0.2em] text-foreground/80 transition-all hover:text-white"
             >
               Hablemos
+              <span className="absolute -bottom-1 left-0 h-px w-0 bg-primary transition-all duration-300 group-hover:w-full" />
             </Link>
           </div>
         </motion.div>
@@ -125,7 +126,7 @@ function Manifesto() {
     <section className="mx-auto max-w-5xl px-6 py-32 text-center">
       <Reveal>
         <span className="text-xs uppercase tracking-[0.3em] text-primary">Nuestra diferencia</span>
-        <p className="mt-8 text-2xl leading-relaxed text-foreground md:text-4xl md:leading-snug">
+        <p className="mt-8 text-2xl font-light leading-relaxed text-foreground md:text-4xl md:leading-snug">
           No diseñamos solo para que un espacio se vea bien. Diseñamos para que funcione mejor,
           comunique valor y refleje la esencia de quien lo
           <em className="not-italic text-primary"> habita, usa o representa</em>.
@@ -251,7 +252,7 @@ function Amboss() {
           {/* Imagen de fondo expansiva */}
           <div className="absolute inset-0">
             <img
-              src="https://amboss-arquitectura.vercel.app/assets/hero-BZwNo18j.jpg"
+              src="https://amboss-arquitectura.vercel.app/assets/hero-C089cPV6.jpg"
               alt="Hero de AMBOSS Arquitectos"
               className="h-full w-full object-cover object-[center_30%] opacity-40 transition-transform duration-[1.5s] group-hover:scale-105"
             />
