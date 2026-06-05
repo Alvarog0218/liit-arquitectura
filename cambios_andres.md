@@ -63,3 +63,14 @@
 - **Experiencia Full-Screen**: Se rediseñó el Hero de la página de inicio para que sea verdaderamente a pantalla completa (`min-h-screen`), eliminando cualquier espacio en los bordes superiores e inferiores. Ahora la imagen fluye por detrás del Navbar (que es traslúcido).
 - **Ajuste de Layout Global**: Se eliminó el padding global forzado en el contenedor `main` para permitir secciones inmersivas. En su lugar, se aplicó un espaciado superior (`pt-32`) específico a todas las subpáginas (Proyectos, Servicios, Contacto, etc.) para que sus encabezados no queden ocultos tras la barra de navegación fija.
 - **Consistencia en Navegación**: Se verificó que todas las rutas mantengan un equilibrio visual óptimo entre el menú fijo y el inicio del contenido.
+
+## [2026-06-05] - Optimización de Dependencias y Herramientas
+
+### Añadido
+- **Optimización de Imágenes**: Instalación de `sharp` y `svgo` como dependencias de desarrollo para habilitar el procesamiento automatizado de activos.
+- **Script `images:optimize`**: Nuevo comando en `package.json` para convertir imágenes a WebP y actualizar importaciones en un solo paso.
+
+### Cambiado
+- **Organización de Paquetes**: Se movieron `@cloudflare/vite-plugin` y `@tailwindcss/vite` a `devDependencies` para optimizar el bundle de producción.
+- **Estandarización de Nombre**: Se actualizó el nombre del proyecto a `liit-arquitectura` tanto en `package.json` como en `wrangler.jsonc`.
+- **Sincronización de Entorno**: Actualización de `package-lock.json` para reflejar las nuevas herramientas de desarrollo.
